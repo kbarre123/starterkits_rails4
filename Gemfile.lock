@@ -134,6 +134,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    libv8 (3.16.14.3)
     listen (2.7.1)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
@@ -256,6 +257,7 @@ GEM
     redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
+    ref (1.0.5)
     remotipart (1.2.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
@@ -323,8 +325,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    terminal-notifier (1.6.0)
-    terminal-notifier-guard (1.5.3)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.3)
     tilt (1.4.1)
@@ -388,7 +391,7 @@ DEPENDENCIES
   rails (~> 4.1.0)
   rails_12factor
   rails_admin
-  rb-fsevent
+  rb-inotify
   rspec-rails
   rspec-sidekiq
   sass-rails
@@ -402,8 +405,7 @@ DEPENDENCIES
   sinatra
   spring
   spring-commands-rspec
-  terminal-notifier
-  terminal-notifier-guard
+  therubyracer
   turbolinks
   uglifier
   unicorn

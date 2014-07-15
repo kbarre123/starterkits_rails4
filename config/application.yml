@@ -9,16 +9,16 @@ common: &common
   # Downcased and trimmed app name for namespaces.
   # Safest to start with a letter rather than a number.
   # See locales/en.yml for setting your app's user facing brand name.
-  app_name: 'starterkit'
+  app_name: 'zachary'
 
   social:
-    facebook: 'https://www.facebook.com/simple10'
-    twitter: 'https://twitter.com/joejohnston'
-    google_plus: 'https://plus.google.com/+JoeJohnstonSF'
-    linkedin: 'http://www.linkedin.com/in/startupjoe'
+    facebook: 'https://www.facebook.com/kennethcharlesbarrett'
+    twitter: 'https://twitter.com/bogusbarrett'
+    google_plus: 'https://plus.google.com/+KCBarrett'
+    linkedin: 'http://www.linkedin.com/in/'
 
   contact:
-    email: 'joe@example.com'
+    email: 'kc@example.com'
     phone: '555-555-5555'
 
   session:
@@ -54,12 +54,12 @@ default_env: &default_env
   # Channging the keys will invalidate user passwords,
   # forcing users to use the forgot password feature.
   # TODO: make new keys with `rake secret`
-  DEVISE_SECRET_KEY: '7da7ce94b67dcb951aba685032aa7ddc17ae2551a7a11b60369eff65f1c3cc0a5525c93900b6315daf1558b973d7f5c0b6e80addd61225d6a23694a5fb8ff83e'
-  DEVISE_PEPPER: 'f23254b349cb3712c8c31dbdc4bb40555b0cd2ca9de98a15821ba5c2cb7d232b352e7f992bb8345dc53a2b4091f6b9dd1531bdaf1f1ae516d698e9f870d4e69c'
+  DEVISE_SECRET_KEY: '97e3aeb2205334723d6145b3d53a375dd1e73a4025b742d9c4b615fcad05e3285fd124bb7c03f811d7ca08190d338c3de72204dd1905afebc7dfbb282614ae6e'
+  DEVISE_PEPPER: 'fd433ea5692d19817ed6eca9086045d629d941f7e4f701bbae57ba60e5ef160e7b03f9bd738627f45e5a533fb9ca845bbd926c7dc41317f52ad32faf5c4cfaee'
 
   # Signed cookie encryption key.
   # TODO: make new key with `rake secret`
-  SECRET_KEY_BASE: '16e628ec083d6127ca30716ac69c578ba47a900702f0d498c149b87d06eeebd1bc0be22929e16e2180cb137e9be8bc7f77dd3b9c13fbb306330bb6450cfbc051'
+  SECRET_KEY_BASE: '314de9fbc2c08dac328eace7d9c9390e5afd51874e165915ade124e5abc333ceae5035cfbf8f17bf68a3f4d7a220efc1bc8e8e20e10fcdaefcc1cfd2f7b07255'
 
   # Redis server used by Sidekiq, cache, etc.
   REDIS_URL: 'redis://localhost:6379/0'

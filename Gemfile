@@ -7,11 +7,11 @@ gem 'rails', '~> 4.1.0'
 # PLATFORM SPECIFIC
 #
 # OSX
-gem 'rb-fsevent', group: [:development, :test]        # monitor file changes without hammering the disk
-gem 'terminal-notifier-guard', group: [:development]  # notify terminal when specs run
-gem 'terminal-notifier', group: [:development]
+# gem 'rb-fsevent', group: [:development, :test]        # monitor file changes without hammering the disk
+# gem 'terminal-notifier-guard', group: [:development]  # notify terminal when specs run
+# gem 'terminal-notifier', group: [:development]
 # LINUX
-# gem 'rb-inotify', :group => [:development, :test]   # monitor file changes without hammering the disk
+gem 'rb-inotify', :group => [:development, :test]   # monitor file changes without hammering the disk
 
 
 
@@ -44,7 +44,7 @@ gem 'nprogress-rails'
 # Not needed in production if precompiling assets
 gem 'coffee-rails'
 # Uncomment if node.js is not installed
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Design
 gem 'bootstrap-sass'
