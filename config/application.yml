@@ -18,8 +18,8 @@ common: &common
     linkedin: 'http://www.linkedin.com/in/'
 
   contact:
-    email: <%= ENV["CONTACT_EMAIL"] %>
-    phone: <%= ENV["CONTACT_PHONE"] %>
+    email: <%= ENV["OWNER_EMAIL"] %>
+    phone: <%= ENV["OWNER_PHONE"] %>
 
   session:
     key: '_starterkit_session'
@@ -31,7 +31,7 @@ common: &common
 
   mail:
     layout: 'emails/email'
-    from: 'info.zacharyreview@gmail.com'
+    from: <%= ENV["OWNER_EMAIL"] %>
 
 
 # Default ENV vars.
@@ -39,7 +39,7 @@ common: &common
 # As a best practice, do not put production values in this file for security reasons.
 default_env: &default_env
   # From address to use when sending email
-  MAIL_HOST: 'localhost:3000'
+  MAIL_HOST: <%= ENV["MAIL_HOST"] %>
 
   # Host used to determine direct requests vs CDN.
   # See RobotsController.
