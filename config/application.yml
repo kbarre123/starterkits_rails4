@@ -12,14 +12,14 @@ common: &common
   app_name: 'zachary'
 
   social:
-    facebook: 'https://www.facebook.com/kennethcharlesbarrett'
-    twitter: 'https://twitter.com/bogusbarrett'
+    facebook: 'https://www.facebook.com/zacharyreview'
+    twitter: 'https://twitter.com/zacharyreview'
     google_plus: 'https://plus.google.com/+KCBarrett'
     linkedin: 'http://www.linkedin.com/in/'
 
   contact:
-    email: 'kc@example.com'
-    phone: '555-555-5555'
+    email: <%= ENV["CONTACT_EMAIL"] %>
+    phone: <%= ENV["CONTACT_PHONE"] %>
 
   session:
     key: '_starterkit_session'
@@ -31,7 +31,7 @@ common: &common
 
   mail:
     layout: 'emails/email'
-    from: 'from@example.com'
+    from: 'info.zacharyreview@gmail.com'
 
 
 # Default ENV vars.
@@ -43,23 +43,23 @@ default_env: &default_env
 
   # Host used to determine direct requests vs CDN.
   # See RobotsController.
-  CANONICAL_HOST: 'rails4-starterkit.herokuapp.com'
+  CANONICAL_HOST: <%= ENV["DOMAIN"] %>
 
-  AUTH_FACEBOOK_KEY: '201539556694091'
-  AUTH_FACEBOOK_SECRET: '80ae1dc93961b7f9a79265af0eeca698'
-  AUTH_TWITTER_KEY: 'hbcu8JvAB1FftWw7c3oog'
-  AUTH_TWITTER_SECRET: 'uTspycZ4T7QAeA9QLGBb1zoLrR6K7ChBPdYt8F7nZc'
+  AUTH_FACEBOOK_KEY: <%= ENV["AUTH_FACEBOOK_KEY"] %>
+  AUTH_FACEBOOK_SECRET: <%= ENV["AUTH_FACEBOOK_SECRET"] %>
+  AUTH_TWITTER_KEY: <%= ENV["AUTH_TWITTER_KEY"] %>
+  AUTH_TWITTER_SECRET: <%= ENV["AUTH_TWITTER_SECRET"] %>
 
   # Devise password encryption keys.
   # Channging the keys will invalidate user passwords,
   # forcing users to use the forgot password feature.
   # TODO: make new keys with `rake secret`
-  DEVISE_SECRET_KEY: '97e3aeb2205334723d6145b3d53a375dd1e73a4025b742d9c4b615fcad05e3285fd124bb7c03f811d7ca08190d338c3de72204dd1905afebc7dfbb282614ae6e'
-  DEVISE_PEPPER: 'fd433ea5692d19817ed6eca9086045d629d941f7e4f701bbae57ba60e5ef160e7b03f9bd738627f45e5a533fb9ca845bbd926c7dc41317f52ad32faf5c4cfaee'
+  DEVISE_SECRET_KEY: <%= ENV["DEVISE_SECRET_KEY"] %>
+  DEVISE_PEPPER: <%= ENV["DEVISE_PEPPER"] %>
 
   # Signed cookie encryption key.
   # TODO: make new key with `rake secret`
-  SECRET_KEY_BASE: '314de9fbc2c08dac328eace7d9c9390e5afd51874e165915ade124e5abc333ceae5035cfbf8f17bf68a3f4d7a220efc1bc8e8e20e10fcdaefcc1cfd2f7b07255'
+  SECRET_KEY_BASE: <%= ENV["SECRET_KEY_BASE"] %>
 
   # Redis server used by Sidekiq, cache, etc.
   REDIS_URL: 'redis://localhost:6379/0'

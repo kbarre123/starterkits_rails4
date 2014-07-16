@@ -18,7 +18,7 @@ gem 'rb-inotify', :group => [:development, :test]   # monitor file changes witho
 # Monitoring
 gem 'rack-timeout', '~> 0.1.0beta3'
 gem 'newrelic_rpm'
-gem 'airbrake'                # use with airbrake.io or errbit
+#gem 'airbrake'                # use with airbrake.io or errbit
 # gem 'airbrake_user_attributes'  # use with self-hosted errbit; see config/initializers/airbrake.rb
 # gem 'rack-google-analytics'
 
@@ -58,7 +58,7 @@ gem 'premailer-rails'
 # Authentication
 gem 'devise'
 gem 'cancan'
-gem 'omniauth'
+gem 'omniauth', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 # gem 'omniauth-persona'
