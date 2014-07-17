@@ -3,19 +3,9 @@
 <p><%= link_to 'Add Business', new_business_path %></p>
  
 <table>
-  <tr>
-    <th>Business</th>
-    <th>Description</th>
-  </tr>
- 
   <% @business.each do |business| %>
     <tr>
-      <td><%= business.title %></td>
-      <td><%= business.text %></td>
-      <td><%= link_to 'Review', business_path(business) %></td>
-      <td><%= link_to 'Edit', edit_business_path(business) %></td>
-      <td><%= link_to 'Delete', business_path(business),
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to business.title, business_path(business) %></td>
     </tr>
   <% end %>
 </table>

@@ -2,47 +2,14 @@
   <strong>Business Name:</strong>
   <%= @business.title %>
 </p>
- 
 <p>
   <strong>Text:</strong>
   <%= @business.text %>
 </p>
-
 <h2>Add a review:</h2>
-<%= form_for([@business, @business.reviews.build]) do |f| %>
-  <p>
-    <%= f.label :reviewer %><br>
-    <%= f.text_field :reviewer %>
-  </p>
-  <p>
-    <%= f.label :review %><br>
-    <%= f.text_area :review %>
-  </p>
-  <p>
-    <%= f.label :rating %><br>
-    <%= f.text_area :rating %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'reviews/form' %>
 
-<p><%= link_to 'Back', businesses_path %> | <%= link_to 'Edit', edit_business_path(@business) %></p> 
+<p><%= link_to 'Back', businesses_path %>
 
 <h2>Reviews</h2>
-<% @business.reviews.each do |review| %>
-  <p>
-    <strong>Reviewer:</strong>
-    <%= review.reviewer %>
-  </p>
- 
-  <p>
-    <strong>Review:</strong>
-    <%= review.review %>
-  </p>
-
-  <p>
-    <strong>Rating:</strong>
-    <%= review.rating %>
-  </p>
-<% end %>
+<%= render @business.reviews %>
