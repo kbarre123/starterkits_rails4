@@ -1,0 +1,11 @@
+<p>
+  <strong>Business Name:</strong>
+  <%= @business.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @business.text %>
+</p>
+
+<p><%= link_to 'Back', businesses_path %> | <%= link_to 'Edit', edit_business_path(@business) %></p> 
