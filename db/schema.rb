@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716191037) do
+ActiveRecord::Schema.define(version: 20140717023245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20140716191037) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.string   "reviewer"
+    t.text     "review"
+    t.integer  "rating"
+    t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["business_id"], :name => "index_reviews_on_business_id"
+    t.foreign_key ["business_id"], "businesses", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_reviews_business_id"
   end
 
   create_table "users", force: true do |t|
