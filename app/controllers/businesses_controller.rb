@@ -12,6 +12,7 @@ class BusinessesController < ApplicationController
      
         if @business.save
             redirect_to @business
+            flash[:notice] = 'New business created.'
         else
             render 'new'
         end

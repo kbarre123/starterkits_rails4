@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     def create
     @business = Business.find(params[:business_id])
     @review = @business.reviews.create(review_params)
+    flash[:notice] = 'Review posted!'
     redirect_to business_path(@business)
     end
 
