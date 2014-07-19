@@ -1,29 +1,14 @@
-<%= form_for([@business, @business.reviews.build]) do |f| %>
-  <% if @business.errors.any? %>
-    <div id="error_explanation">
-        <div class="alert alert-danger">
-          The form contains <%=  pluralize(@business.errors.count, "error") %>!
-        </div>
-        <ul>
-          <% @business.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+<%= simple_form_for([@business, @business.reviews.build]) do |f| %>
   <p>
-    <%= f.label :reviewer %><br>
-    <%= f.text_field :reviewer %>
+    <%= f.input :reviewer %>
   </p>
   <p>
-    <%= f.label :review %><br>
-    <%= f.text_area :review %>
+    <%= f.input :review %>
   </p>
   <p>
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
+    <%= f.input :rating %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.button :submit %>
   </p>
 <% end %>
