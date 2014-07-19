@@ -82,7 +82,7 @@ group :development do
   gem 'sdoc', require: false    # bundle exec rake doc:rails
 
   # Errors
-  # gem 'better_errors'
+  gem 'better_errors'
   # gem 'binding_of_caller'     # extra features for better_errors
   # gem 'meta_request'          # for rails_panel chrome extension
 
@@ -113,7 +113,7 @@ group :development, :test do
   # gem 'pry-remote'            # connect remotely to pry console
   # gem 'coolline'              # sytax highlighting as you type
   # gem 'coderay'               # use with coolline
-  gem 'awesome_print'           # pretty pring debugging output
+  gem 'awesome_print'           # pretty print debugging output
 
   # Testing
   gem 'rspec-rails'
