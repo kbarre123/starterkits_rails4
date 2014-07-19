@@ -8,11 +8,17 @@
 #
 # # Add Admin role
 #roles = Role.create([{name: 'super_admin'}, {name: 'staff'}])
-users = User.create([{
-    email: 'info.zacharyreview@gmail.com', 
+User.create([{
+    email: 'info@zacharyreview.com', 
     first_name: 'super', 
     last_name: 'admin', 
     password: 'password', 
     password_confirmation: 'password', 
     is_admin: true
     }])
+
+5.times do |i|
+  Business.create(title: "Business ##{i+1}", text: "A business.")
+  User.create([{first_name: "First_#{i+2}", last_name: "Last_#{i+2}", email: "email#{i+2}@example.com", password: "password#{i+2}", password_confirmation: "password#{i+2}"}])
+  Review.create(reviewer: "First_#{i+2} Last #{i+2}", review: "User review ##{i+1}", rating: "#{i+1}", business_id: "#{i+1}")
+end
