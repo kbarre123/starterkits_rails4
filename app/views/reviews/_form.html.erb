@@ -1,4 +1,16 @@
 <%= form_for([@business, @business.reviews.build]) do |f| %>
+  <% if @business.errors.any? %>
+    <div id="error_explanation">
+        <div class="alert alert-danger">
+          The form contains <%=  pluralize(@business.errors.count, "error") %>!
+        </div>
+        <ul>
+          <% @business.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <p>
     <%= f.label :reviewer %><br>
     <%= f.text_field :reviewer %>

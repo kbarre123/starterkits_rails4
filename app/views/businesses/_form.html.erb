@@ -1,14 +1,15 @@
 <%= form_for @business do |f| %>
   <% if @business.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@business.errors.count, "error") %> prohibited
-      this business from being saved:</h2>
-    <ul>
-    <% @business.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
+      <div class="alert alert-danger">
+        The form contains <%=  pluralize(@business.errors.count, "error") %>!
+      </div>
+      <ul>
+        <% @business.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   <p>
     <%= f.label :title %><br>
