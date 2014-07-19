@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  has_many :reviews, dependent: :destroy
+
   after_create :send_welcome_emails
 
   def display_name

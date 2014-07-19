@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717023245) do
+ActiveRecord::Schema.define(version: 20140719011947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,17 +59,6 @@ ActiveRecord::Schema.define(version: 20140717023245) do
     t.index ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
   end
 
-  create_table "reviews", force: true do |t|
-    t.string   "reviewer"
-    t.text     "review"
-    t.integer  "rating"
-    t.integer  "business_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["business_id"], :name => "index_reviews_on_business_id"
-    t.foreign_key ["business_id"], "businesses", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_reviews_business_id"
-  end
-
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -99,6 +88,20 @@ ActiveRecord::Schema.define(version: 20140717023245) do
     t.index ["is_admin"], :name => "index_users_on_is_admin"
     t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
     t.index ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+  end
+
+  create_table "reviews", force: true do |t|
+    t.string   "reviewer"
+    t.text     "review"
+    t.integer  "rating"
+    t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.index ["business_id"], :name => "index_reviews_on_business_id"
+    t.index ["user_id"], :name => "index_reviews_on_user_id"
+    t.foreign_key ["business_id"], "businesses", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_reviews_business_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_reviews_user_id"
   end
 
 end
