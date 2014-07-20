@@ -9,8 +9,7 @@
 <h2>Add a review:</h2>
 <%= render 'reviews/form' %>
 
-<p><%= link_to 'Back', businesses_path %>
+<button type="button" class="btn btn-default"><%= link_to 'Back', businesses_path %></button>
 
 <h2>Reviews</h2>
 <%= render @business.reviews %>    
-
