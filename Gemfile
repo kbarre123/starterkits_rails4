@@ -48,6 +48,7 @@ gem 'therubyracer', platforms: :ruby
 
 # Design
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 # gem 'bourbon'
 # gem 'neat'
 # gem 'country_select'

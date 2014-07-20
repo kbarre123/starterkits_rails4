@@ -1,4 +1,5 @@
 <%= simple_form_for([@business, @business.reviews.build]) do |f| %>
+  <%= f.error_notification %>
   <p>
     <%= f.input :reviewer %>
   </p>
@@ -6,7 +7,7 @@
     <%= f.input :review %>
   </p>
   <p>
-    <%= f.input :rating %>
+    <%= f.input :rating, collection: 1..5 %>
   </p>
   <p>
     <%= f.submit :class => 'btn btn-primary' %>
