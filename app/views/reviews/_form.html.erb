@@ -1,9 +1,6 @@
 <%= simple_form_for([@business, @business.reviews.build]) do |f| %>
   <%= f.error_notification %>
   <p>
-    <%= f.input :reviewer %>
-  </p>
-  <p>
     <%= f.input :review %>
   </p>
   <p>

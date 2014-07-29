@@ -4,6 +4,14 @@
       <strong>About:</strong>
       <%= @business.text %>
     </p>
+    <p>
+        <% if can? :update, @business %>
+            <%= link_to "Edit", edit_business_path(@business) %> | 
+        <% end %>
+        <% if can? :destroy, @business %>
+            <%= link_to "Destroy", @business, :method => :delete, :confirm => "Are you sure?" %>
+        <% end %>
+    </p>
 </div>
 
 <div class="well">
