@@ -13,7 +13,6 @@ User.create([{
     first_name: 'super', 
     last_name: 'admin', 
     password: 'password', 
-    password_confirmation: 'password', 
     is_admin: true
     }])
 
