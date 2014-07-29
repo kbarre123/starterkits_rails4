@@ -20,6 +20,7 @@
 #= require rails_confirm_dialog
 #= require jquery.scrollto
 
+
 # Add error class to .avatar images if they fail to load
 # See avatar.scss and _avatar.html.haml
 #= require imagesloaded

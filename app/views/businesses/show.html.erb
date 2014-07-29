@@ -1,15 +1,25 @@
-<p>
-  <strong>Business Name:</strong>
-  <%= @business.title %>
-</p>
-<p>
-  <strong>Text:</strong>
-  <%= @business.text %>
-</p>
-<h2>Add a review:</h2>
-<%= render 'reviews/form' %>
+<div class="jumbotron">
+    <h3><strong><%= @business.title %></strong></h3>
+    <p>
+      <strong>About:</strong>
+      <%= @business.text %>
+    </p>
+    <p>
+        <% if can? :update, @business %>
+            <%= link_to "Edit", edit_business_path(@business) %> | 
+        <% end %>
+        <% if can? :destroy, @business %>
+            <%= link_to "Destroy", @business, :method => :delete, :confirm => "Are you sure?" %>
+        <% end %>
+    </p>
+</div>
 
-<button type="button" class="btn btn-default"><%= link_to 'Back', businesses_path %></button>
+<div class="well">
+    <h2>Add a review:</h2>
+    <%= render 'reviews/form' %>
+
+    <button type="button" class="btn btn-default"><%= link_to 'Back', businesses_path %></button>
+</div>
 
 <h2>Reviews</h2>
 <%= render @business.reviews %>    

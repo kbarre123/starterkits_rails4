@@ -10,7 +10,10 @@ class Ability
     can :manage, User, id: user.id
     can :manage, Authentication, user_id: user.id
     can :read, :all
-    can :manage, Review, user_id: user.id # Trying to only allow a user to edit their own review
+    can :create, Review
+    can :update, Review do |review|
+      review.try(:user) == user
+    end
 
     if user.is_admin? && defined? RailsAdmin
       # Allow everything

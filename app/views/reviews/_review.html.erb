@@ -1,4 +1,4 @@
-<% if !review.reviewer.nil? %>
+<% if !review.user_id.nil? %>
     <div class="well">
         <p>
             <strong>Reviewer:</strong>
@@ -14,5 +14,6 @@
             <strong>Rating:</strong>
             <%= review.rating %>
         </p>
+        
     </div>
 <% end %>
