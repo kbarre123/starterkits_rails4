@@ -1,5 +1,6 @@
 <div class="jumbotron">
     <h3><strong><%= @business.title %></strong></h3>
+    <p><strong>Average Rating: </strong><%= @business.reviews.average("rating") %></p>
     <p>
       <strong>About:</strong>
       <%= @business.text %>
@@ -22,4 +23,4 @@
 </div>
 
 <h2>Reviews</h2>
-<%= render @business.reviews %>    
+<%= render @business.reviews %>

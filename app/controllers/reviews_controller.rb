@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
     load_and_authorize_resource
-    #skip_authorization_check
-    #skip_before_action :authenticate_user!
     
     def new
-        #@review = Review.new
+    end
+
+    def index
     end
 
     def create
@@ -41,6 +41,6 @@ class ReviewsController < ApplicationController
 
     private
     def review_params
-      params.require(:review).permit(:reviewer, :review, :rating)
+      params.require(:review).permit(:review, :rating)
     end
 end
