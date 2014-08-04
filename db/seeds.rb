@@ -17,7 +17,7 @@ User.create([{
     }])
 
 5.times do |i|
-  Business.create(title: "Business ##{i+1}", text: "A business.")
+  Business.create(title: "Business ##{i+1}", text: "A business.", street_no: '123', street:'Maple St.', city:'Zachary', zip_code: '70791', country: 'United States', telephone:'(225) 123-4567', website:'www.website.com', op_hours:'7:00AM-9:00PM, Mon-Sat', category:'Auto Repair')
   User.create([{first_name: "First_#{i+2}", last_name: "Last_#{i+2}", email: "email#{i+2}@example.com", password: "password#{i+2}", password_confirmation: "password#{i+2}"}])
   Review.create(reviewer: "First_#{i+2} Last #{i+2}", review: "User review ##{i+1}", rating: "#{i+1}", business_id: "#{i+1}")
 end

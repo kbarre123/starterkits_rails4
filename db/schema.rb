@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719011947) do
+ActiveRecord::Schema.define(version: 20140804201947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20140719011947) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "street_no"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zip_code"
+    t.string   "country"
+    t.string   "telephone"
+    t.string   "website"
+    t.string   "op_hours"
+    t.string   "category"
   end
 
   create_table "oauth_caches", id: false, force: true do |t|

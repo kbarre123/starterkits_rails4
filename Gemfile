@@ -78,6 +78,9 @@ gem 'sinatra', require: false
 gem 'addressable'
 gem 'settingslogic'
 
+# Add country select dropdown
+ #gem 'country_select', github: 'stefanpenner/country_select'
+
 group :development do
   # Docs
   gem 'sdoc', require: false    # bundle exec rake doc:rails

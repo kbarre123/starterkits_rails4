@@ -11,6 +11,28 @@
       <%= @business.text %>
     </p>
     <p>
+      <strong>Address:</strong>
+      <%= @business.street_no %> <%= @business.street %>
+      <%= @business.city %>, LA
+      <%= @business.zip_code %>
+    </p>
+    <p>
+      <strong>Telephone:</strong>
+      <%= @business.telephone %>
+    </p>
+    <p>
+      <strong>Website:</strong>
+      <%= @business.website %>
+    </p>
+    <p>
+      <strong>Hours of Operation:</strong>
+      <%= @business.op_hours %>
+    </p>
+    <p>
+      <strong>Category:</strong>
+      <%= @business.category %>
+    </p>
+    <p>
         <% if can? :update, @business %>
             <%= link_to "Edit", edit_business_path(@business) %> | 
         <% end %>
