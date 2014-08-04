@@ -1,11 +1,11 @@
 #
-# This file configures the New Relic Agent.  New Relic monitors
-# Ruby, Java, .NET, PHP, and Python applications with deep visibility and low overhead.
-# For more information, visit www.newrelic.com.
+# This file configures the New Relic Agent.  New Relic monitors Ruby, Java,
+# .NET, PHP, Python and Node applications with deep visibility and low
+# overhead.  For more information, visit www.newrelic.com.
 #
-# Generated October 05, 2013
+# Generated August 04, 2014
 #
-# This configuration file is custom generated for app18506725@heroku.com
+# This configuration file is custom generated for app20910963@heroku.com
 
 
 # Here are the settings that are common to all environments
@@ -42,7 +42,7 @@ common: &default_settings
   #       - Ajax Service
   #       - All Services
   #
-  app_name: <%= I18n.t 'brand.name' %>
+  app_name: Zachary Review
 
   # When "true", the agent collects performance data about your
   # application and reports this data to the New Relic service at
@@ -160,11 +160,6 @@ common: &default_settings
     # product levels.
     enabled: true
 
-    # Rails Only - tells error collector whether or not to capture a
-    # source snippet around the place of the error when errors are View
-    # related.
-    capture_source: true
-
     # To stop specific errors from reporting to New Relic, set this property
     # to comma-separated values.  Default is to ignore routing errors,
     # which are how 404's get triggered.
@@ -188,11 +183,9 @@ common: &default_settings
 
 development:
   <<: *default_settings
-  # Turn off communication to New Relic service in development mode (also
-  # 'enabled').
-  # NOTE: for initial evaluation purposes, you may want to temporarily
-  # turn the agent on in development mode.
-  monitor_mode: false
+  # Turn on communication to New Relic service in development mode
+  monitor_mode: true
+  app_name: Zachary Review (Development)
 
   # Rails Only - when running in Developer Mode, the New Relic Agent will
   # present performance information on the last 100 transactions you have
@@ -200,9 +193,6 @@ development:
   # NOTE: There is substantial overhead when running in developer mode.
   # Do not use for production or load testing.
   developer_mode: true
-
-  # Enable textmate links
-  # textmate: true
 
 test:
   <<: *default_settings
@@ -224,3 +214,4 @@ production:
 staging:
   <<: *default_settings
   monitor_mode: true
+  app_name: Zachary Review (Staging)
