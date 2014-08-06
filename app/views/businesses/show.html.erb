@@ -46,7 +46,7 @@
     <h2>Add a review:</h2>
     <%= render 'reviews/form' %>
 
-    <button type="button" class="btn btn-default"><%= link_to 'Back', businesses_path %></button>
+    <%= link_to('Back to Businesses', businesses_path, :class => 'btn btn-primary')  %>
 </div>
 
 <h2>Reviews</h2>
