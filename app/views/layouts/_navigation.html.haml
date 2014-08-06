@@ -10,6 +10,8 @@
   .collapse.navbar-collapse
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
+        /%li= link_to I18n.t('links.nav.'), businesses_path
+        %li= link_to I18n.t('nav.title'), businesses_path
         %li.dropdown
           %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
             = render 'users/avatar', size: :tiny

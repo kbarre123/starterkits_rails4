@@ -150,6 +150,9 @@ en:
         edit:
           password: 'Leave blank unless updating password'
 
+  nav:
+    title: "Business List"
+
     # Labels and hints examples
     # labels:
     #   defaults:
