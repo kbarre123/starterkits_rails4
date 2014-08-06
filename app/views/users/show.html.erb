@@ -1,6 +1,7 @@
 <h2><%= @user.first_name %>'s Home Page</h2>
+<br>
 <h3>My Reviews</h3>
 <p>
-    <%= render @user.reviews %>
+    <%= render @user.reviews.reverse_order %>
 </p>
   
