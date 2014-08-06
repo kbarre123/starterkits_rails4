@@ -151,7 +151,8 @@ en:
           password: 'Leave blank unless updating password'
 
   nav:
-    title: "Business List"
+    business_index: "Business List"
+    user_home: "Home"
 
     # Labels and hints examples
     # labels:

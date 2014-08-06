@@ -5,13 +5,13 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    = link_to I18n.t('brand.name'), root_path, class: 'navbar-brand'
+    = link_to I18n.t('brand.name'), businesses_path, class: 'navbar-brand'
 
   .collapse.navbar-collapse
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
-        /%li= link_to I18n.t('links.nav.'), businesses_path
-        %li= link_to I18n.t('nav.title'), businesses_path
+        %li= link_to I18n.t('nav.user_home'), user_home_path
+        %li= link_to I18n.t('nav.business_index'), businesses_path
         %li.dropdown
           %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
             = render 'users/avatar', size: :tiny
