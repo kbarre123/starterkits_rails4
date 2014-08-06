@@ -17,5 +17,14 @@
         <span class = "timestamp">
             posted <%= time_ago_in_words(review.created_at) %> ago.
         </span>
+
+        <p>
+            <!--<% if can? :update, @review %>
+                <%= link_to "Edit", business_review_path(@review) %> | 
+            <% end %>
+            <% if can? :destroy, @review %>
+                <%= link_to "Destroy", @review, :method => :delete, :confirm => "Are you sure?" %>
+            <% end %>-->
+        </p>
     </div>
 <% end %>
