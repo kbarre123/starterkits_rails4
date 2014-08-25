@@ -1,35 +1,39 @@
-<%= simple_form_for @business do |f| %>
-  <%= f.error_notification %>
-  <p>
-    <%= f.input :title %>
-  </p>
- 
-  <p>
-    <%= f.input :text %>
-  </p>
+<div class="row">
+  <div class="col-md-12">
+    <%= simple_form_for @business do |f| %>
+      <%= f.error_notification %>
+      <p>
+        <%= f.input :title %>
+      </p>
+     
+      <p>
+        <%= f.input :text %>
+      </p>
 
-  <fieldset>
-    <legend>Address</legend>
-    <div>
-      <%= f.input :street_no %>
-      <%= f.input :street %>
-      <%= f.input :city, priority: [ "Zachary" ], collection: [ "Zachary", "Baker", "Clinton"] %>
-      <%= f.input :zip_code, priority: ['70791'], collection: [ '70791', '70714', '70722']  %>
-      <%= f.input :country, collection: [ 'United States' ] %>
-    </div>
-  </fieldset>
-  <br>
-  <fieldset>
-    <legend>General Info</legend>
-    <div>
-      <%= f.input :telephone, placeholder: '(225) xxx-xxxx' %>
-      <%= f.input :website, placeholder: 'www.website.com' %>
-      <%= f.input :op_hours, placeholder: '7:00AM - 9:00PM; Mon-Sat' %>
-      <%= f.input :category, collection: ['Auto Repair', 'Bakery', 'Custom Rims', 'Dental', 'Environmental', 'Family Services', 'Gardening', 'Home', 'Insurance', 'Janitorial Supplies', 'Kimono Repair', 'Lawn & Garden', 'Moving Services', 'Nanny-for-hire', 'Occupational Services', 'Personal Trainer', 'Quarterback Trainer', 'Retail', 'System Admin', 'Turn-down-for-what?', 'Underwater Basket Weaving', 'Veterinary Services', 'Welding Supplies', 'X-Ray Gun Sales', 'Youth Group T-shirt Sales', 'Zebra Waxing' ] %>
-    </div>
-  </fieldset>
-    
-  <p>
-    <%= f.button :submit %>
-  </p>
-<% end %>
+      <fieldset>
+        <legend>Address</legend>
+        <div>
+          <%= f.input :street_no %>
+          <%= f.input :street %>
+          <%= f.input :city, priority: [ "Zachary" ], collection: [ "Zachary", "Baker", "Clinton"] %>
+          <%= f.input :zip_code, priority: ['70791'], collection: [ '70791', '70714', '70722']  %>
+          <%= f.input :country, collection: [ 'United States' ] %>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>General Info</legend>
+        <div>
+          <%= f.input :telephone, placeholder: '(225) xxx-xxxx' %>
+          <%= f.input :website, placeholder: 'www.website.com' %>
+          <%= f.input :op_hours, placeholder: '7:00AM - 9:00PM; Mon-Sat' %>
+          <%= f.input :category, collection: ['Auto Repair', 'Bakery', 'Custom Rims', 'Dental', 'Environmental', 'Family Services', 'Gardening', 'Home', 'Insurance', 'Janitorial Supplies', 'Kimono Repair', 'Lawn & Garden', 'Moving Services', 'Nanny-for-hire', 'Occupational Services', 'Personal Trainer', 'Quarterback Trainer', 'Retail', 'System Admin', 'Turn-down-for-what?', 'Underwater Basket Weaving', 'Veterinary Services', 'Welding Supplies', 'X-Ray Gun Sales', 'Youth Group T-shirt Sales', 'Zebra Waxing' ] %>
+        </div>
+      </fieldset>
+        
+      <p>
+        <%= f.button :submit %>
+      </p>
+    <% end %>
+  </div>
+</div>
