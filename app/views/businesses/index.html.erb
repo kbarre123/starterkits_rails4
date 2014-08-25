@@ -1,15 +1,22 @@
-<h1>Business Listing</h1>
-
-<p>
-    <% if can? :create, @business %>
-        <%= link_to 'Add Business', new_business_path %>
-    <% end %>
-</p>
- 
-<table class="table table-striped table-hover">
-  <% @business.each do |business| %>
-    <tr>
-      <td><%= link_to business.title, business_path(business) %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="row">
+    <div class="col-md-8">
+        <h1>Business Listing</h1>
+        <p>
+            <% if can? :create, @business %>
+                <%= link_to 'Add Business', new_business_path %>
+            <% end %>
+        </p>
+         
+        <table class="table table-striped table-hover">
+          <% @business.each do |business| %>
+            <tr>
+              <td><%= link_to business.title, business_path(business) %></td>
+            </tr>
+          <% end %>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <a class="twitter-timeline" href="https://twitter.com/zacharyreview" data-widget-id="503913469620404224">Tweets by @zacharyreview</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+</div>
