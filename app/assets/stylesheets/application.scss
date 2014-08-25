@@ -48,21 +48,16 @@ body {
     background-color: #636363;
 }
 
-a {
-    color: #ED592F;
-    &:hover {
-        color: blue;
-    }
-    &:hover {
-      background-color: #eee;
-    }
-}
-
-.navbar-default .navbar-brand{
-    //color: #F2EAD3;
+.navbar-default .navbar-brand {
     color: WHITE;
+    &:hover { 
+      color: #ED592F !important; 
+    }
 }
 
 .navbar .nav > li > a {
   color: WHITE;
+  &:hover { 
+    color: #ED592F !important; 
+  }
 }
