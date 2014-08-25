@@ -28,6 +28,7 @@
 // Padding to clear fixed nav
 body {
   padding-top: 70px;
+  background-color: #F8F8F8;
 }
 
 // Make sure alerts are nicely formatted
@@ -41,4 +42,27 @@ body {
 #nprogress .spinner {
   bottom: 15px;
   top: auto;
+}
+
+.navbar {
+    background-color: #636363;
+}
+
+a {
+    color: #ED592F;
+    &:hover {
+        color: blue;
+    }
+    &:hover {
+      background-color: #eee;
+    }
+}
+
+.navbar-default .navbar-brand{
+    //color: #F2EAD3;
+    color: WHITE;
+}
+
+.navbar .nav > li > a {
+  color: WHITE;
 }
