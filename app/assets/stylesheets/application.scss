@@ -45,19 +45,17 @@ body {
 }
 
 .navbar {
-    background-color: #636363;
+  background-color: #636363;
 }
 
-.navbar-default .navbar-brand {
-    color: WHITE;
-    &:hover { 
-      color: #ED592F !important; 
-    }
+td a {
+  color: #ED592F !important;
 }
 
-.navbar .nav > li > a {
-  color: WHITE;
+.navbar-default .navbar-brand, .navbar .nav > li > a {
+  color: #fff;
   &:hover { 
     color: #ED592F !important; 
+    font-weight: bold;
   }
 }
