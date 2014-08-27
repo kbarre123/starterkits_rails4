@@ -17,7 +17,11 @@
         <span class = "timestamp">
             posted <%= time_ago_in_words(review.created_at) %> ago.
         </span>
-
-        
+        <span class = "timestamp">
+            <% if current_user.id %>
+                <%= link_to 'Delete', [review.business, review], method: :delete,
+                       data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </span>
     </div>
 <% end %>
