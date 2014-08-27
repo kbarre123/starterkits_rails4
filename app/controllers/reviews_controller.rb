@@ -34,6 +34,8 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
+        @business = Business.find(params[:business_id])
+        @review = @business.reviews.find(params[:id])
         @review.destroy
         flash[:notice] = "Review deleted."
         redirect_to business_path(@business)
