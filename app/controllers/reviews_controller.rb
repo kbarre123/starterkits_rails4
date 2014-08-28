@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
     load_and_authorize_resource
+
+    before_filter :load_business
     
     def new
     end
@@ -8,7 +10,6 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @business = Business.find(params[:business_id])
         @review = @business.reviews.create(review_params)
         @review.user_id = current_user.id
         @review.reviewer = current_user.first_name + ' ' + current_user.last_name
@@ -22,26 +23,31 @@ class ReviewsController < ApplicationController
     end
 
     def edit
+        @review = @business.reviews.find(params[:id])
     end
 
     def update
-        if @review.update_attributes(review_params[:review])
-            flash[:notice] = "Review updated."
-            redirect_to business_path(@business)
+        @review = @business.reviews.find(params[:id])
+        if @review.update_attributes(params[:review])
+            format.html { redirect_to [@business, @review], notice: 'Review updated.'}
         else
             render :action => 'edit'
         end
     end
 
     def destroy
-        @business = Business.find(params[:business_id])
         @review = @business.reviews.find(params[:id])
         @review.destroy
-        flash[:notice] = "Review deleted."
         redirect_to business_path(@business)
+        flash[:notice] = "Review deleted."
     end
 
     private
+
+    def load_business
+        @business = Business.find(params[:business_id])
+    end
+
     def review_params
       params.require(:review).permit(:review, :rating)
     end
