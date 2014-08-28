@@ -9,14 +9,10 @@ class Ability
   #def initialize(user = User.new) #Removed 8/27 trying to fix abilities for edit/delete comments
   def initialize(user)
     user ||= User.new #Guest user
-
     can :manage, User, id: user.id
     can :manage, Authentication, user_id: user.id
     can :read, :all
-    can :create, Review
-    can :update, Review do |review|
-      review.try(:user) == user
-    end
+    can :manage, Review, :user_id => user.id
 
     if user.is_admin? && defined? RailsAdmin
       # Allow everything
