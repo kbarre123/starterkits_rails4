@@ -36,6 +36,7 @@ class BusinessesController < ApplicationController
      
       if @business.update(business_params)
         redirect_to @business
+        flash[:notice] = "Business updated."
       else
         render 'edit'
       end
@@ -44,8 +45,8 @@ class BusinessesController < ApplicationController
     def destroy
       #@business = Business.find(params[:id])
       @business.destroy
-     
       redirect_to businesses_path
+      flash[:notice] = "Business deleted."
     end
 
     private
