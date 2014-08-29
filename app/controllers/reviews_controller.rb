@@ -28,8 +28,9 @@ class ReviewsController < ApplicationController
 
     def update
         @review = @business.reviews.find(params[:id])
-        if @review.update_attributes(params[:review])
-            format.html { redirect_to [@business, @review], notice: 'Review updated.'}
+        if @review.update(params[review_params])
+            redirect_to businesses_path(@business)
+            flash[:notice] = 'Review updated!'
         else
             render :action => 'edit'
         end
@@ -49,6 +50,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:review, :rating)
+      params.require(:review).permit(:id, :review, :rating)
     end
 end
