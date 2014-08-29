@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
     before_filter :load_business
     
     def new
+        @review = @business.reviews.build
     end
 
     def index
@@ -23,12 +24,12 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-        @review = @business.reviews.find(params[:id])
+        @review = Review.find(params[:id])
     end
 
     def update
-        @review = @business.reviews.find(params[:id])
-        if @review.update(params[review_params])
+        @review = Review.find(params[:id])
+        if @review.update(review_params)
             redirect_to businesses_path(@business)
             flash[:notice] = 'Review updated!'
         else
@@ -50,6 +51,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:id, :review, :rating)
+      params.require(:review).permit(:review, :rating)
     end
 end
