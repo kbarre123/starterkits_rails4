@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     def update
         @review = Review.find(params[:id])
         if @review.update_attributes(review_params)
-            redirect_to businesses_path(@business)
+            redirect_to business_path(@business)
             flash[:notice] = 'Review updated!'
         else
             render :action => 'edit'
