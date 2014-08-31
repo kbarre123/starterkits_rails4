@@ -9,4 +9,13 @@ class Business < ActiveRecord::Base
     validates :country, presence: true
     validates :telephone, presence: true
     validates_associated :reviews
+
+    #geocoded_by :gmaps4rails_address
+    #after_validation :geocode
+
+    #private
+
+    #def gmaps4rails_address
+    #  "#{street_no}, #{street}, #{city}, #{zip_code}, #{country}"
+    #end
 end

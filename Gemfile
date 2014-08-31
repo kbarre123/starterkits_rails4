@@ -79,8 +79,9 @@ gem 'sinatra', require: false
 gem 'addressable'
 gem 'settingslogic'
 
-# Add country select dropdown
- #gem 'country_select', github: 'stefanpenner/country_select'
+# Google Maps
+gem 'geocoder'
+gem 'gmaps4rails'
 
 group :development do
   # Docs

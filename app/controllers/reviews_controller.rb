@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     before_filter :load_business
     
     def new
-        @review = @business.reviews.build
+        @review = @business.reviews.build(review_params)
     end
 
     def index
@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
 
     def update
         @review = Review.find(params[:id])
-        if @review.update(review_params)
+        if @review.update_attributes(review_params)
             redirect_to businesses_path(@business)
             flash[:notice] = 'Review updated!'
         else

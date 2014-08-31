@@ -19,7 +19,7 @@ class BusinessesController < ApplicationController
     end
 
     def show
-      #@business = Business.find(params[:id])
+      @business = Business.find(params[:id])
     end
 
     def index
@@ -28,11 +28,11 @@ class BusinessesController < ApplicationController
     end
 
     def edit
-      #@business = Business.find(params[:id])
+      @business = Business.find(params[:id])
     end
 
     def update
-      #@business = Business.find(params[:id])
+      @business = Business.find(params[:id])
      
       if @business.update(business_params)
         redirect_to @business

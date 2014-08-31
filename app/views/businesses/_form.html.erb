@@ -24,7 +24,7 @@
       <fieldset>
         <legend>General Info</legend>
         <div>
-          <%= f.input :telephone, placeholder: '(225) xxx-xxxx' %>
+          <%= f.input :telephone, as: :tel %>
           <%= f.input :website, placeholder: 'www.website.com' %>
           <%= f.input :op_hours, placeholder: '7:00AM - 9:00PM; Mon-Sat' %>
           <%= f.input :category, collection: ['Auto Repair', 'Bakery', 'Custom Rims', 'Dental', 'Environmental', 'Family Services', 'Gardening', 'Home', 'Insurance', 'Janitorial Supplies', 'Kimono Repair', 'Lawn & Garden', 'Moving Services', 'Nanny-for-hire', 'Occupational Services', 'Personal Trainer', 'Quarterback Trainer', 'Retail', 'System Admin', 'Turn-down-for-what?', 'Underwater Basket Weaving', 'Veterinary Services', 'Welding Supplies', 'X-Ray Gun Sales', 'Youth Group T-shirt Sales', 'Zebra Waxing' ] %>
