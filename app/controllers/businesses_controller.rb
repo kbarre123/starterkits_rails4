@@ -20,6 +20,11 @@ class BusinessesController < ApplicationController
 
     def show
       @business = Business.find(params[:id])
+      @hash = Gmaps4rails.build_markers(@business) do |business, marker|
+        marker.lat business.latitude
+        marker.lng business.longitude
+        marker.title business.title
+      end
     end
 
     def index
@@ -52,7 +57,7 @@ class BusinessesController < ApplicationController
     private
     def business_params
         params.require(:business).permit(:title, :text, :street_no, :street, :city, :zip_code,
-          :country, :telephone, :website, :op_hours, :category)
+          :country, :telephone, :website, :op_hours, :category, :address, :longitude, :latitude)
     end
 
 end

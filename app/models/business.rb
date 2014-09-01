@@ -1,4 +1,5 @@
 class Business < ActiveRecord::Base
+
     has_many :reviews, dependent: :destroy
     validates :title, presence: true, length: { minimum: 5 }
     validates :category, presence: true
@@ -8,14 +9,11 @@ class Business < ActiveRecord::Base
     validates :zip_code, presence: true
     validates :country, presence: true
     validates :telephone, presence: true
+    #validates :address, presence: true #Commented these out trying to debug; will want them validated though
+    #validates :longitude, presence: true
+    #validates :latitude, presence: true
     validates_associated :reviews
 
-    #geocoded_by :gmaps4rails_address
-    #after_validation :geocode
-
-    #private
-
-    #def gmaps4rails_address
-    #  "#{street_no}, #{street}, #{city}, #{zip_code}, #{country}"
-    #end
+    geocoded_by :address
+    after_validation :geocode
 end

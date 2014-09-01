@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804201947) do
+ActiveRecord::Schema.define(version: 20140901020127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20140804201947) do
     t.string   "website"
     t.string   "op_hours"
     t.string   "category"
+    t.string   "address"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.boolean  "gmaps"
   end
 
   create_table "oauth_caches", id: false, force: true do |t|

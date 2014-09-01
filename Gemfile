@@ -47,7 +47,7 @@ gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 
 # Design
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'autoprefixer-rails'
 gem 'will_paginate-bootstrap'
 # gem 'bourbon'

@@ -10,7 +10,7 @@ if defined?(WillPaginate)
         end
       end
       module CollectionMethods
-        alias_method :num_pages, :total_pages
+        #alias_method :num_pages, :total_pages
       end
     end
   end

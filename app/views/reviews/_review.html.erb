@@ -19,10 +19,9 @@
         </span>
         <% if can? :update, review %>
             <span class = "timestamp">
-                <%= link_to "Edit", [:edit, review.business, review], class: 'btn btn-small' %>|
+                <%= link_to "Edit", [:edit, review.business, review]%> |
 
-                <%= link_to "Delete", [review.business, review], method: :delete,
-                       data: { confirm: 'Are you sure?' } %>
+                <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' }  %>
             </span>
         <% end %>
     </div>

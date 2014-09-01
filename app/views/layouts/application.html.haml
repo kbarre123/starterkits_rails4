@@ -22,6 +22,7 @@
       %footer.page__footer
         - if content_for? :footer
           = yield :footer
+          = yield :scripts
         - else
           = render 'layouts/footer'
           = debug(params) if Rails.env.development?
