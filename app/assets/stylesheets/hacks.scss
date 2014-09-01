@@ -3,3 +3,10 @@
 .modal-open, .modal-open .navbar-fixed-top {
   margin-right: auto !important;
 }
+
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+}

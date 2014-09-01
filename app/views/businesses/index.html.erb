@@ -14,7 +14,7 @@
           <% end %>
         </table>
         <div class="pagination">
-            <%= will_paginate @business, renderer: BootstrapPagination::Rails %>
+            <%= will_paginate @business.reverse_order, renderer: BootstrapPagination::Rails %>
         </div>
         
     </div>

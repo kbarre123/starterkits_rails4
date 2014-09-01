@@ -13,12 +13,10 @@
       <fieldset>
         <legend>Address</legend>
         <div>
-          <%= f.input :street_no %>
           <%= f.input :street %>
           <%= f.input :city, priority: [ "Zachary" ], collection: [ "Zachary", "Baker", "Clinton"] %>
+          <%= f.input :state, priority: [ "Louisiana" ], collection: [ "Louisiana" ] %>
           <%= f.input :zip_code, priority: ['70791'], collection: [ '70791', '70714', '70722']  %>
-          <%= f.input :country, collection: [ 'United States' ] %>
-          <%= f.input :address %>
         </div>
       </fieldset>
       <br>

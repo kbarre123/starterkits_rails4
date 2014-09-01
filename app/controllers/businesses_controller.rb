@@ -28,8 +28,8 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      #@business = Business.all
-      @business = Business.all.paginate(page: params[:page], per_page: 5)
+      @business = Business.all.order(:title)
+      @business = @business.paginate(page: params[:page], per_page: 5)
     end
 
     def edit
@@ -56,8 +56,8 @@ class BusinessesController < ApplicationController
 
     private
     def business_params
-        params.require(:business).permit(:title, :text, :street_no, :street, :city, :zip_code,
-          :country, :telephone, :website, :op_hours, :category, :address, :longitude, :latitude)
+        params.require(:business).permit(:title, :text, :street, :city, :state, :zip_code, 
+          :telephone, :website, :op_hours, :category, :address, :longitude, :latitude, :gmaps)
     end
 
 end
