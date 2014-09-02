@@ -1,24 +1,17 @@
 <% if !review.user_id.nil? %>
     <div class="well">
         <p>
-            <strong>Reviewer:</strong>
-            <%= review.reviewer %>
+            <span class="review_quote">"<%= review.review %>"</span><br>
+            - <span class="reviewer_quote"><%= review.reviewer %></span>
         </p>
-         
         <p>
-            <strong>Review:</strong>
-            <%= review.review %>
-        </p>
-
-        <p>
-            <strong>Rating:</strong>
-            <%= review.rating %>
+            Rating: <%= review.rating %>
         </p>
         <span class = "timestamp">
             posted <%= time_ago_in_words(review.created_at) %> ago.
         </span>
         <% if can? :update, review %>
-            <span class = "timestamp">
+            <span>
                 <%= link_to "Edit", [:edit, review.business, review]%> |
 
                 <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' }  %>

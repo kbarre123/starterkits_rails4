@@ -28,8 +28,8 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      @business = Business.all.order(:title)
-      @business = @business.paginate(page: params[:page], per_page: 5)
+      @businesses = Business.all.order(:title)
+      @businesses = @businesses.paginate(page: params[:page], per_page: 5)
     end
 
     def edit

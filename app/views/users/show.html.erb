@@ -1,7 +1,31 @@
-<h2><%= @user.first_name %>'s Home Page</h2>
-<br>
-<h3>My Reviews</h3>
-<p>
-    <%= render @user.reviews.reverse_order %>
-</p>
-  
+<div class="row">
+    <div class="col-sm-12">
+        <% if @user.first_name.blank? %>
+            <h2>My Reviews</h2>
+        <% else %>
+            <h2><%= @user.first_name %>'s Reviews</h2>
+        <% end %>
+        <br>
+        <div>
+            <% @reviews.each do |review| %>
+                <div class="well">
+                    <span class="bus_name_home"><%= link_to review.business.title, business_path(review.business) %></span><br>
+                    
+                    <span class="review_quote">"<%= review.review %>"</span><br>  
+                    Rating: <%= review.rating %><br>  
+                    <span class="timestamp">posted <%= time_ago_in_words(review.created_at) %> ago.</span>
+                    <% if can? :update, review %>
+                        <span class = "timestamp">
+                            <%= link_to "Edit", [:edit, review.business, review]%> |
+
+                            <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' }  %>
+                        </span>
+                    <% end %>
+                </div><!-- well -->
+            <% end %>
+        </div><!-- reviews container-->
+        <div class="pagination">
+            <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+        </div>
+    </div><!-- col-sm-12 -->
+</div><!-- row -->
