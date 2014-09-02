@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
     <div class="jumbotron">
-      <h3><strong><%= @business.title %></strong></h3>
+      <h3 class="bus_name"><strong><%= @business.title %></strong></h3>
       <p>
           <strong>Average Rating: </strong><%= number_with_precision(
               @business.reviews.average("rating"), :precision => 2 || 0) 
