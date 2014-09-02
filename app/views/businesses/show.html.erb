@@ -10,10 +10,15 @@
               @business.reviews.average("rating"), :precision => 2 || 0) 
               %>
       </p>
-      <p>
-        <strong>About:</strong>
-        <%= @business.text %>
-      </p>
+      <% if @business.text.blank? %>
+            
+      <% else %>
+        <p>
+          <strong>About:</strong>
+          <%= @business.text %>
+        </p>
+      <% end %>
+      
       <p>
         <strong>Address:</strong>
         <!--<a href="http://maps.google.com/?q=<%= @business.street %>,<%= @business.city %>,<%= @business.state %>,<%= @business.zip_code %>&z=14" target="blank">-->
@@ -24,22 +29,30 @@
           <%= @business.state %>  
           <%= @business.zip_code %>
         </a>
-        
-
       </p>
+
       <p>
         <strong>Telephone:</strong>
         <%= @business.telephone %>
       </p>
-      <p>
-        <strong>Website:</strong>
-        <a href="<%= @business.website %>" target="blank">Link</a>
-        
-      </p>
-      <p>
+      <% if @business.website.blank? %>
+            
+      <% else %>
+        <p>
+          <strong>Website:</strong>
+          <a href="<%= @business.website %>" target="blank">Link</a>
+        </p>
+      <% end %>
+
+      <% if @business.op_hours.blank? %>
+            
+      <% else %>
+        <p>
         <strong>Hours of Operation:</strong>
         <%= @business.op_hours %>
       </p>
+      <% end %>
+      
       <p>
         <strong>Category:</strong>
         <%= @business.category %>
