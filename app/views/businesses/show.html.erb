@@ -16,10 +16,15 @@
       </p>
       <p>
         <strong>Address:</strong>
-        <%= @business.street %>
-        <%= @business.city %>, 
-        <%= @business.state %>  
-        <%= @business.zip_code %>
+        <!--<a href="http://maps.google.com/?q=<%= @business.street %>,<%= @business.city %>,<%= @business.state %>,<%= @business.zip_code %>&z=14" target="blank">-->
+        <a href="http://maps.apple.com/?q=<%= @business.title %> <%= @business.city %> <%= @business.zip_code %>&z=14" target="blank">
+          
+          <%= @business.street %>
+          <%= @business.city %>, 
+          <%= @business.state %>  
+          <%= @business.zip_code %>
+        </a>
+        
 
       </p>
       <p>
@@ -28,7 +33,8 @@
       </p>
       <p>
         <strong>Website:</strong>
-        <%= @business.website %>
+        <a href="<%= @business.website %>" target="blank">Link</a>
+        
       </p>
       <p>
         <strong>Hours of Operation:</strong>
