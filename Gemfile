@@ -94,6 +94,7 @@ group :development do
 
   # Deployment
   # gem 'capistrano'
+  gem 'travis-lint'
 
   # Guard
   gem 'guard-rspec'
