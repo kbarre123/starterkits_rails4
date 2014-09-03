@@ -11,13 +11,10 @@
             <tr>
                 <td>
                     <% if business.created_at > 7.days.ago %>
-                        <%= link_to business.title, business %> <span class="label label-info">New</span> 
+                        <%= link_to business.title, business %> <span class="label label-primary">New</span> 
                     <% else %>
                         <%= link_to business.title, business %>
                     <% end %>
-
-                    
-                    
                 </td>
             </tr>
           <% end %>
