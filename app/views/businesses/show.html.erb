@@ -72,8 +72,7 @@
       <!-- This is a static googleMap to serve as a placeholder until I can get
         gmaps4rails working. -->
       <a href="http://maps.apple.com/?q=<%= @business.title %> <%= @business.city %> <%= @business.state %> <%= @business.zip_code %>&z=17" target="blank">
-          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @business.latitude %>, <%= @business.longitude %>&zoom=15&size=600x400&maptype=roadmap
-    &markers=color:red%7C<%= @business.latitude %>, <%= @business.longitude %>&key=API_KEY" class="img-responsive img-rounded map">
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @business.latitude %>,<%= @business.longitude %>&zoom=15&size=600x400&maptype=roadmap&markers=color:red%7C<%= @business.latitude %>,<%= @business.longitude %>&key=<%= ENV['GOOGLE_API_KEY'] %>" class="img-responsive img-rounded map">
       </a>
       <!-- Below is div for gmaps4rails -->
       <!--<div style='width: 800px;'>
