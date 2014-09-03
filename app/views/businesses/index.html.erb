@@ -9,7 +9,16 @@
         <table class="table table-hover">
           <% @businesses.each do |business| %>
             <tr>
-              <td><%= link_to business.title, business_path(business) %></td>
+                <td>
+                    <% if business.created_at > 7.days.ago %>
+                        <%= link_to business.title, business %> <span class="label label-info">New</span> 
+                    <% else %>
+                        <%= link_to business.title, business %>
+                    <% end %>
+
+                    
+                    
+                </td>
             </tr>
           <% end %>
         </table>
