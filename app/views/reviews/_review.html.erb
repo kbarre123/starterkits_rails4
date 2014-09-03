@@ -2,7 +2,7 @@
     <div class="well">
         <p>
             <span class="review_quote">"<%= review.review %>"</span><br>
-            <span class="glyphicon glyphicon-user"></span> - <span class="reviewer_quote"><%= review.reviewer %></span>
+            <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.reviewer %></span>
         </p>
         <p>
             Rating: <%= review.rating %>

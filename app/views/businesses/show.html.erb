@@ -106,7 +106,13 @@
 <div class="row">
   <div class="col-sm-12">
     <h2>Reviews</h2>
-    <%= render @business.reviews.reverse_order %>
+    <% if @business.reviews.count == 0 %>
+    <p class="bus_name_home">
+      Be the first to review this business!
+    </p>
+    <% else %>
+      <%= render @business.reviews.reverse_order %>
+    <% end %>
   </div><!-- col-sm-12 -->
 </div>
 <!-- Below is script for gmaps4rails -->
