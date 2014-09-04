@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
     load_and_authorize_resource
-    #skip_authorization_check
-    #skip_before_action :authenticate_user!
+
+    helper_method :sort_column, :sort_direction
 
     def new
         @business = Business.new
@@ -28,8 +28,9 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      @businesses = Business.all.order(:title)
-      @businesses = @businesses.paginate(page: params[:page], per_page: 10)
+      @businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 10)
+      #@businesses = Business.all.order(:title)
+      #@businesses = @businesses.paginate(page: params[:page], per_page: 10)
     end
 
     def edit
@@ -55,9 +56,18 @@ class BusinessesController < ApplicationController
     end
 
     private
+
     def business_params
         params.require(:business).permit(:title, :text, :street ,:map_heading, :city, :state, :zip_code, 
           :telephone, :website, :op_hours, :category, :longitude, :latitude, :gmaps)
+    end
+
+    def sort_column
+      Business.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end

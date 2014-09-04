@@ -6,23 +6,15 @@
                 <%= link_to 'Add Business', new_business_path %>
             <% end %>
         </p>
-        <table class="table table-hover ">
-          <% @businesses.each do |business| %>
-            <tr>
-                <td>
-                    <% if business.created_at > 7.days.ago %>
-                        <%= link_to business.title, business %> <span class="label label-primary">New</span>
-                    <% else %>
-                        <%= link_to business.title, business %>
-                    <% end %>
-                </td>
-            </tr>
-          <% end %>
-        </table>
-        <div class="pagination">
-            <%= will_paginate @businesses, renderer: BootstrapPagination::Rails %>
-        </div>
-        
+        <%= form_tag businesses_path, :method => 'get', :id => "businesses_search" do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+          <div id="businesses">
+            <%= render 'businesses' %>
+          </div>
+        <% end %>
     </div>
     <div class="col-md-4" align="center">
         <a class="twitter-timeline" href="https://twitter.com/zacharyreview" data-widget-id="503913469620404224">Tweets by @zacharyreview</a>
