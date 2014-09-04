@@ -50,28 +50,20 @@ body {
   background-color: #636363;
 }
 
-td a {
-  color: #ED592F !important;
+a {
+  color: $primary-color;
 }
 
 .navbar-default .navbar-brand, .navbar .nav > li > a {
   color: #fff;
   &:hover { 
-    color: #ED592F !important; 
+    color: $primary-color; 
     font-weight: bold;
   }
 }
 
-a {
-  color: #ED592F;
-} 
-
-.bus_name {
-  color: #ED592F;
-  font-size: 2.5em;
-}
-
-.bus_name_home {
-  color: #ED592F;
-  font-size: 1.5em;  
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
