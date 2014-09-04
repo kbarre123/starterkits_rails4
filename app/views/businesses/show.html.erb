@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
-    <div class="jumbotron">
+    <div class="jumbotron" id="bus_well">
       <h3 class="bus_name"><strong><%= @business.title %></strong></h3>
       <p>
           <strong>Average Rating: </strong><%= number_with_precision(
@@ -68,7 +68,8 @@
       <!-- This is a static googleMap to serve as a placeholder until I can get
         gmaps4rails working. -->
       <a href="http://maps.apple.com/?q=<%= @business.title %> <%= @business.city %> <%= @business.state %> <%= @business.zip_code %>&z=17" target="blank">
-          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @business.latitude %>,<%= @business.longitude %>&zoom=15&size=600x400&maptype=roadmap&markers=color:red%7C<%= @business.latitude %>,<%= @business.longitude %>&key=<%= ENV['GOOGLE_API_KEY'] %>" class="img-responsive img-rounded map">
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @business.latitude %>, <%= @business.longitude %>&zoom=15&size=600x400&maptype=roadmap
+    &markers=color:red%7C<%= @business.latitude %>, <%= @business.longitude %>" class="img-responsive img-rounded map">
       </a>
     </div>
     <div><!-- Street View Pic -->
