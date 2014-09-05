@@ -4,7 +4,7 @@
 
  // For searching businesses on index
 $(function() {
-  $("#businesses th a").live("click", function() {
+  $("#businesses th a, .pagination a").live("click", function() {
     $.getScript(this.href);
     return false;
   });

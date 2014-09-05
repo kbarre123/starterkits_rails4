@@ -12,10 +12,8 @@
 #
 #= require jquery_2
 #= require jquery_ujs
-#= require jquery.turbolinks
 #= require turbolinks
-#= require underscore
-#= require gmaps/google
+#= require jquery.turbolinks
 #= require bootstrap
 #= require nprogress
 #= require nprogress-turbolinks
@@ -29,3 +27,6 @@
 #= require avatar.errors
 
 #= require businesses
+#= require underscore
+#= require gmaps/google
+#= require_tree .
