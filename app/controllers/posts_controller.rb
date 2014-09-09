@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-  #load_and_authorize_resources
-  skip_authorization_check
+  load_and_authorize_resource
 
   def index
     @posts = Post.paginate(page: params[:page], per_page: 10)
