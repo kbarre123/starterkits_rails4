@@ -1,0 +1,19 @@
+-# Be sure to also modify new_message.text.haml whenever editing this file
+
+- @image_url = 'http://placehold.it/580x300'
+- @unsubscribe_url = user_home_url
+
+//- content_for :lead do
+//  Subject: #{@contact.subject}
+
+%h3
+  From:
+%p #{@contact.name}
+
+%h3 
+  Subject:
+%p #{@contact.subject}
+
+%h3
+  Message:
+%p #{@contact.body}

@@ -44,6 +44,9 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  # Contact Us
+  resources "contacts", only: [:new, :create]
+
   # Dummy preview pages for testing.
   get '/p/test' => 'pages#test', as: 'test'
   get '/p/email' => 'pages#email' if ENV['ALLOW_EMAIL_PREVIEW'].present?

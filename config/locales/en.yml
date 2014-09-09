@@ -153,7 +153,7 @@ en:
   nav:
     business_index: "Business List"
     user_home: "My Reviews"
-    contact_us: "Contact Us"
+    contact: "Contact"
 
     # Labels and hints examples
     # labels:

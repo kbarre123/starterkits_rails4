@@ -1,12 +1,14 @@
 <%= simple_form_for([@business, @review]) do |f| %>
   <%= f.error_notification %>
-  <p>
-    <%= f.input :review %>
-  </p>
-  <p>
-    <%= f.input :rating, collection: 1..10 %>
-  </p>
-  <p>
-    <%= f.submit :class => 'btn btn-primary' %>
-  </p>
+  <fieldset class="fields">
+    <p>
+      <%= f.input :review %>
+    </p>
+    <p>
+      <%= f.input :rating, collection: 1..10 %>
+    </p>
+    <p>
+      <%= f.submit :class => 'btn btn-primary' %>
+    </p>
+  </fieldset>
 <% end %>
