@@ -1,5 +1,6 @@
 # Route prefixes use a single letter to allow for vanity urls of two or more characters
 Rails.application.routes.draw do
+
   if defined? Sidekiq
     require 'sidekiq/web'
     authenticate :user, lambda {|u| u.is_admin? } do
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   # User
   resources :users, path: 'u', only: :show do
     resources :authentications, path: 'accounts'
+    
   end
   get '/home' => 'users#show', as: 'user_home'
 
@@ -46,6 +48,9 @@ Rails.application.routes.draw do
 
   # Contact Us
   resources "contacts", only: [:new, :create]
+
+  # Posts
+  resources :posts
 
   # Dummy preview pages for testing.
   get '/p/test' => 'pages#test', as: 'test'

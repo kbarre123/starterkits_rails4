@@ -13,6 +13,8 @@ class Ability
     can :manage, Authentication, user_id: user.id
     can :read, :all
     can :manage, Review, :user_id => user.id
+    can :new, Contact
+    can :manage, Post, :user_id => user.id
 
     if user.is_admin? && defined? RailsAdmin
       # Allow everything
