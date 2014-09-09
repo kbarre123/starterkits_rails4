@@ -1,0 +1,56 @@
+<div class="row ">
+  <div class="col-md-8">
+    <h1>Posts</h1>
+    <div class="well">
+      <%= simple_form_for([@post, @posts.build]) do |f| %>
+        <%= f.error_notification %>
+        <p>
+          <%= f.input :text %>
+        </p>
+        <p>
+          <%= f.submit :class => 'btn btn-primary' %>
+        </p>
+      <% end %> 
+    </div>
+    
+    <p>
+    <div id="businesses">
+        <%= render @posts.reverse_order %>
+    </div>
+    <div class="pagination">
+      <%= will_paginate @post, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well bus_ad_side" id="top">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <div class="well bus_ad_side" id="mid">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <div class="well bus_ad_side" id="bottom">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </div>
+</div>

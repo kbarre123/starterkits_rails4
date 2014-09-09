@@ -1,0 +1,11 @@
+<%= simple_form_for([@post]) do |f| %>
+  <%= f.error_notification %>
+  <fieldset class="fields">
+    <p>
+      <%= f.input :text %>
+    </p>
+    <p>
+      <%= f.submit :class => 'btn btn-primary' %>
+    </p>
+  </fieldset>
+<% end %>

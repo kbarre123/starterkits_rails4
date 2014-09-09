@@ -1,0 +1,13 @@
+<div class="well">
+    <p><%= post.text %></p>
+    <p>
+        <%= render 'users/avatar', user: post.user %> - <span class="reviewer_quote"><%= post.user.first_name %> <%= post.user.last_name %></span>
+    </p>
+    <span class = "timestamp">
+        posted <%= time_ago_in_words(post.created_at) %> ago.
+    </span>
+    <% if can? :update, post %>
+        <%= link_to "Edit", edit_post_path(post) %> | 
+        <%= link_to "Destroy", post, data: { confirm: 'Are you sure?' }, method: :delete %></br>
+    <% end %> 
+</div>
