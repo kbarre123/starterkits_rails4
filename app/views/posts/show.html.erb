@@ -1,25 +1,20 @@
-<div class="row ">
-  <div class="col-md-8">
-    <h1>Posts</h1>
-    <div class="well">
-      <%= simple_form_for([@post, @posts.build]) do |f| %>
+<div class="row">
+  <div class="col-sm-12 col-md-8">
+    <%= render @post %>
+    <h2>Comments</h2>
+    <%= simple_form_for([@post, @post.comments.build]) do |f| %>
         <%= f.error_notification %>
         <p>
           <%= f.input :text %>
         </p>
         <p>
           <%= f.submit :class => 'btn btn-primary' %>
+          <%= link_to('Back', posts_path, :class => 'btn btn-primary')  %>
         </p>
-      <% end %> 
-    </div>
-    
-    <p>
-    <div class="">
-        <%= render @posts.reverse_order %>
-    </div>
-    <div class="pagination">
-      <%= will_paginate @post, renderer: BootstrapPagination::Rails %>
-    </div>
+
+    <% end %>
+
+    <%= render @post.comments %>
   </div>
   <div class="col-md-4">
     <div class="well bus_ad_side" id="top">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909210223) do
+ActiveRecord::Schema.define(version: 20140909224302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,14 +49,6 @@ ActiveRecord::Schema.define(version: 20140909210223) do
     t.boolean  "gmaps"
     t.string   "state"
     t.string   "map_heading"
-  end
-
-  create_table "oauth_caches", id: false, force: true do |t|
-    t.integer  "authentication_id", null: false
-    t.text     "data_json",         null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["authentication_id"], :name => "index_oauth_caches_on_authentication_id"
   end
 
   create_table "users", force: true do |t|
@@ -97,6 +89,26 @@ ActiveRecord::Schema.define(version: 20140909210223) do
     t.integer  "user_id"
     t.index ["user_id"], :name => "index_posts_on_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_posts_user_id"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "text"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["post_id"], :name => "index_comments_on_post_id"
+    t.index ["user_id"], :name => "index_comments_on_user_id"
+    t.foreign_key ["post_id"], "posts", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_comments_post_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_comments_user_id"
+  end
+
+  create_table "oauth_caches", id: false, force: true do |t|
+    t.integer  "authentication_id", null: false
+    t.text     "data_json",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["authentication_id"], :name => "index_oauth_caches_on_authentication_id"
   end
 
   create_table "rails_admin_histories", force: true do |t|

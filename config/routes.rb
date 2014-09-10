@@ -50,7 +50,9 @@ Rails.application.routes.draw do
   resources "contacts", only: [:new, :create]
 
   # Posts
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   # Dummy preview pages for testing.
   get '/p/test' => 'pages#test', as: 'test'

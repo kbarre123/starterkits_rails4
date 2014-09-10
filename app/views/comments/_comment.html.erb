@@ -1,0 +1,18 @@
+<% if !comment.user_id.nil? %>
+    <div class="well">
+        <p>
+            <span class="review_quote">"<%= comment.text %>"</span><br>
+            <%= render 'users/avatar', user: comment.user %> - <span class="reviewer_quote"><%= comment.user.first_name %> <%= comment.user.last_name %></span>
+        </p>
+        <span class = "timestamp">
+            posted <%= time_ago_in_words(comment.created_at) %> ago.
+        </span>
+        <% if can? :update, comment %>
+            <span>
+                <%= link_to "Edit", [:edit, comment.post, comment]%> |
+
+                <%= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }  %>
+            </span>
+        <% end %>
+    </div>
+<% end %>

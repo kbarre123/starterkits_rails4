@@ -14,11 +14,15 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path(@post)
       flash[:notice] = 'New post created.'
     else
       render 'new'
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def edit
@@ -29,7 +33,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
    
     if @post.update(post_params)
-      redirect_to posts_path
+      redirect_to posts_path(@post)
       flash[:notice] = "Post updated."
     else
       render 'edit'
