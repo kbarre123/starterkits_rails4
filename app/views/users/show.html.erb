@@ -11,7 +11,7 @@
                 <div class="well">
                     <span class="bus_name_home"><%= link_to review.business.title, business_path(review.business) %></span><br>
                     
-                    <span class="review_quote">"<%= review.review %>"</span><br>  
+                    <%= review.review %><br>  
                     Rating: <%= review.rating %><br>  
                     <span class="timestamp">posted <%= time_ago_in_words(review.created_at) %> ago.</span>
                     <% if can? :update, review %>

@@ -1,21 +1,27 @@
 <% if !review.user_id.nil? %>
     <div class="well">
         <p>
-            <span class="review_quote">"<%= review.review %>"</span><br>
-            <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.reviewer %></span>
+            <span class=""><%= review.review %></span><br>
         </p>
         <p>
             Rating: <%= review.rating %>
         </p>
-        <span class = "timestamp">
-            posted <%= time_ago_in_words(review.created_at) %> ago.
-        </span>
-        <% if can? :update, review %>
-            <span>
-                <%= link_to "Edit", [:edit, review.business, review]%> |
-
-                <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' }  %>
+        <p>
+            <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.reviewer %></span>
+        </p>
+        <p>
+            <span class = "timestamp">
+                posted <%= time_ago_in_words(review.created_at) %> ago.
             </span>
+        </p>
+        <% if can? :update, review %>
+            <p>
+                <span>
+                    <%= link_to "Edit", [:edit, review.business, review]%> | 
+                    <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-xs"  %>
+                    </button>
+                </span>
+            </p>
         <% end %>
     </div>
 <% end %>

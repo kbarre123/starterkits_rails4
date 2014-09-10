@@ -18,7 +18,7 @@
       
       <p>
         <strong>Address:</strong>
-        <span class="center-block"><a href="http://maps.apple.com/?q=<%= @business.title %> <%= @business.city %> <%= @business.zip_code %>&z=14" target="blank">
+        <span class="center-block"><a href="http://maps.apple.com/?q=<%= @business.title %>%20<%= @business.city %>,%20<%= @business.state %>%20<%= @business.zip_code %>&z=14">
           
           <%= @business.street %><br>
           <%= @business.city %>, 
@@ -64,16 +64,18 @@
     </div><!-- Jumbotron -->
   </div><!-- col-sm-12 col-md-6 -->
   <div class="col-sm-12 col-md-6">
-    <div style='width: 100%;' id="map"><!-- Main Map -->
+    <!-- Main Map -->
+    <div style='width: 100%;' id="map">
       <!-- This is a static googleMap to serve as a placeholder until I can get
         gmaps4rails working. -->
-      <a href="http://maps.apple.com/?q=<%= @business.title %> <%= @business.city %> <%= @business.state %> <%= @business.zip_code %>&z=17" target="blank">
-          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @business.latitude %>, <%= @business.longitude %>&zoom=15&size=600x400&maptype=roadmap
-    &markers=color:red%7C<%= @business.latitude %>, <%= @business.longitude %>" class="img-responsive img-rounded map">
+      <a href="http://maps.apple.com/?q=<%= @business.title %>%20<%= @business.city %>%20<%= @business.state %>%20<%= @business.zip_code %>&z=17">
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @business.latitude %>,<%= @business.longitude %>&zoom=15&size=600x400&maptype=roadmap
+    &markers=color:red%7C<%= @business.latitude %>,<%= @business.longitude %>" class="img-responsive img-rounded map">
       </a>
     </div>
-    <div><!-- Street View Pic -->
-      <a href="http://maps.googleapis.com/maps/api/streetview?size=500x500&location=<%= @business.latitude %>,<%= @business.longitude %>&fov=90&heading=<%= @business.map_heading %>&pitch=10" target="blank"><img src="http://maps.googleapis.com/maps/api/streetview?size=150x150&location=<%= @business.latitude %>,<%= @business.longitude %>&fov=90&heading=<%= @business.map_heading %>&pitch=10" class="bus_thumb img-responsive img-rounded"></a>
+    <!-- Street View Pic -->
+    <div>
+      <a href="http://maps.googleapis.com/maps/api/streetview?size=500x500&location=<%= @business.latitude %>,<%= @business.longitude %>&fov=90&heading=<%= @business.map_heading %>&pitch=10"><img src="http://maps.googleapis.com/maps/api/streetview?size=150x150&location=<%= @business.latitude %>,<%= @business.longitude %>&fov=90&heading=<%= @business.map_heading %>&pitch=10" class="bus_thumb img-responsive img-rounded"></a>
     </div>
     <br>
   </div><!-- col-sm-12 col-md-6 -->
