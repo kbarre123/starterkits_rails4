@@ -2,7 +2,8 @@
   <%= f.error_notification %>
   <fieldset class="fields">
     <p>
-        <%= f.input :text %>
+
+        <%= f.input :text, placeholder: 'New comment...', label: false  %>
     </p>
     <p>
       <%= f.submit :class => 'btn btn-primary' %>

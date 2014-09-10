@@ -1,20 +1,35 @@
 <div class="row">
   <div class="col-sm-12 col-md-8">
-    <%= render @post %>
-    <h2>Comments</h2>
-    <%= simple_form_for([@post, @post.comments.build]) do |f| %>
-        <%= f.error_notification %>
-        <p>
-          <%= f.input :text %>
-        </p>
-        <p>
-          <%= f.submit :class => 'btn btn-primary' %>
-          <%= link_to('Back', posts_path, :class => 'btn btn-primary')  %>
-        </p>
+    <div class="well">
+      <p><%= @post.text %></p>
+      <p>
+        <%= render 'users/avatar', user: @post.user %> - <span class="reviewer_quote"><%= @post.user.first_name %> <%= @post.user.last_name %></span>
+      </p>
+      <span class = "timestamp">
+        posted <%= time_ago_in_words(@post.created_at) %> ago.
+      </span>
+      <% if can? :update, @post %>
+        <%= link_to "Edit", edit_post_path(@post) %> | 
+        <%= link_to "Destroy", @post, data: { confirm: 'Are you sure?' }, method: :delete %></br>
+      <% end %>
+      <div>
+        <%= simple_form_for([@post, @post.comments.build]) do |f| %>
+          <%= f.error_notification %>
+          <p>
+            <%= f.input :text, placeholder: 'New comment...', label: false  %>
+          </p>
+          <p>
+            <%= f.submit :class => 'btn btn-primary' %>
+            <%= link_to('Back', posts_path, :class => 'btn btn-primary')  %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <% if @post.comments.count == 0 %>
 
+    <% else %>
+      <%= render @post.comments.reverse_order %>
     <% end %>
-
-    <%= render @post.comments %>
   </div>
   <div class="col-md-4">
     <div class="well bus_ad_side" id="top">

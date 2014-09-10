@@ -5,7 +5,7 @@
       <%= simple_form_for([@post, @posts.build]) do |f| %>
         <%= f.error_notification %>
         <p>
-          <%= f.input :text %>
+          <%= f.input :text, placeholder: 'New post...', label: false %>
         </p>
         <p>
           <%= f.submit :class => 'btn btn-primary' %>

@@ -19,10 +19,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to posts_path(@post)
+      redirect_to post_path(@post)
       flash[:notice] = 'Comment was successfully created.'
     else
-      redirect_to posts_path(@post)
+      redirect_to post_path(@post)
           flash[:danger] = 'Your review has an error. Please double check!'
     end
   end

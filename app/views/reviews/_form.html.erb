@@ -2,7 +2,7 @@
   <%= f.error_notification %>
   <fieldset class="fields">
     <p>
-      <%= f.input :review %>
+      <%= f.input :review, placeholder: 'New review...', label: false  %>
     </p>
     <p>
       <%= f.input :rating, collection: 1..10 %>
