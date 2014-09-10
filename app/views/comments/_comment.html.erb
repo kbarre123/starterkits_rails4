@@ -1,7 +1,7 @@
 <% if !comment.user_id.nil? %>
     <div class="well">
         <p>
-            <span>"<%= comment.text %>"</span><br>
+            <span><%= comment.text %></span><br>
             <%= render 'users/avatar', user: comment.user %> - <span class="reviewer_quote"><%= comment.user.first_name %> <%= comment.user.last_name %></span>
         </p>
         <span class = "timestamp">
