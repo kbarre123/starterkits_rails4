@@ -28,7 +28,10 @@
     <% if @post.comments.count == 0 %>
 
     <% else %>
-      <%= render @post.comments.reverse_order %>
+      <%= render @comments.reverse_order %>
+      <div class="pagination">
+          <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
+      </div>
     <% end %>
   </div>
   <div class="col-md-4">

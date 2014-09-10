@@ -106,8 +106,11 @@
       Be the first to review this business!
     </p>
     <% else %>
-      <%= render @business.reviews.reverse_order %>
+      <%= render @reviews.reverse_order %>
     <% end %>
+    <div class="pagination">
+      <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+    </div>
   </div><!-- col-sm-12 -->
 </div>
 <!-- Below is script for gmaps4rails -->
