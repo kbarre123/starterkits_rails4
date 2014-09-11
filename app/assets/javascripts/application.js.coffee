@@ -29,3 +29,4 @@
 #= require avatar.errors
 
 #= require businesses
+#= require_tree .
