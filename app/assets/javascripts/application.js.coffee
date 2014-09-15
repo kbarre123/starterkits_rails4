@@ -27,5 +27,3 @@
 #= require avatar.errors
 
 #= require businesses
-#= require underscore
-#= require gmaps/google

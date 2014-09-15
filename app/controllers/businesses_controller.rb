@@ -21,12 +21,12 @@ class BusinessesController < ApplicationController
     def show
       @business = Business.find(params[:id])
       @reviews = @business.reviews.paginate(page: params[:page], per_page: 5)
-      @hash = Gmaps4rails.build_markers(@business) do |business, marker|
-        marker.lat business.latitude
-        marker.lng business.longitude
-        marker.infowindow business.title
-        marker.json({ title: business.title}) #Adds'title' attribute in the source html
-      end
+      #@hash = Gmaps4rails.build_markers(@business) do |business, marker|
+      #  marker.lat business.latitude
+      #  marker.lng business.longitude
+      #  marker.infowindow business.title
+      #  marker.json({ title: business.title}) #Adds'title' attribute in the source html
+      #end
     end
 
     def index
