@@ -114,14 +114,16 @@
   </div><!-- col-sm-12 -->
 </div>
 <!-- Below is script for gmaps4rails -->
-<script type="text/javascript">
-  $(document).ready(function(){
-    alert("jQuery works!");
+<script type="text/javascript" >
+  var ready;
+  ready = function() {
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers(<%= raw @hash.to_json %>);
       handler.map.centerOn(markers[0]);
       handler.map.serviceObject.setZoom(14);
     });
-  });
+  };
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
 </script>
