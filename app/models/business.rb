@@ -11,12 +11,12 @@ class Business < ActiveRecord::Base
     validates :telephone, presence: true
     validates_associated :reviews
 
-    #geocoded_by :gmaps4rails_address
+    geocoded_by :map_address
     after_validation :geocode
 
-    #def gmaps4rails_address
-    #  "#{self.street} #{self.city} #{self.state}, #{self.zip_code}"
-    #end
+    def map_address
+      "#{self.street} #{self.city} #{self.state}, #{self.zip_code}"
+    end
 
     def self.search(search)
       if search
