@@ -12,7 +12,7 @@ class Business < ActiveRecord::Base
     validates_associated :reviews
 
     #geocoded_by :gmaps4rails_address
-    #after_validation :geocode
+    after_validation :geocode
 
     #def gmaps4rails_address
     #  "#{self.street} #{self.city} #{self.state}, #{self.zip_code}"

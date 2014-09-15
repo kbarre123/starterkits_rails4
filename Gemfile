@@ -83,7 +83,7 @@ gem 'settingslogic'
 
 # Google Maps
 gem 'geocoder'
-gem 'gmaps4rails'
+#gem 'gmaps4rails'
 
 group :development do
   # Docs
