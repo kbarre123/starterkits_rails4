@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909224302) do
+ActiveRecord::Schema.define(version: 20140915235800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20140909224302) do
     t.string   "category"
     t.float    "longitude"
     t.float    "latitude"
-    t.boolean  "gmaps"
     t.string   "state"
     t.string   "map_heading"
   end
