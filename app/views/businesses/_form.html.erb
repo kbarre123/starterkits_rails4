@@ -5,10 +5,6 @@
       <p>
         <%= f.input :title %>
       </p>
-     
-      <p>
-        <%= f.input :text %>
-      </p>
 
       <fieldset class="fields">
         <legend>Address</legend>
@@ -18,8 +14,6 @@
           <%= f.input :state, priority: [ "Louisiana" ], collection: [ "Louisiana" ] %>
           <%= f.input :zip_code, priority: ['70791'], collection: [ '70791', '70714', '70722']  %>
           <%= f.input :map_heading %>
-          <%= f.input :latitude %>
-          <%= f.input :longitude %>
         </div>
       </fieldset>
       <br>
@@ -28,7 +22,6 @@
         <div>
           <%= f.input :telephone, as: :tel %>
           <%= f.input :website, placeholder: 'www.website.com' %>
-          <%= f.input :op_hours, placeholder: '7:00AM - 9:00PM; Mon-Sat' %>
           <%= f.input :category, collection: ['Arts, Crafts, & Collectibles', 'Baby', 'Beauty & Fragrances', 'Books & Magazines', 'Business to Business', 'Clothing, Accessories, & Shoes', 'Computers, Accessories, & Services', 'Construction', 'Education', 'Electronics & Telecom', 'Entertainment & Media', 'Food Retail & Service', 'Gifts & Flowers', 'Government', 'Health & Personal Care', 'Heating & Air Service','Home & Garden', 'Legal & Financial Services', 'Nonprofit', 'Pets & Animals', 'Religion', 'Retail', 'Services - Other', 'Sports & Outdoors', 'Toys & Hobbies', 'Travel', 'Vehicle Sales', 'Vehicle Service & Accessories'] %>
         </div>
       </fieldset>
