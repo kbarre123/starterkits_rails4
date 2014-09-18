@@ -10,9 +10,9 @@
         <legend>Address</legend>
         <div>
           <%= f.input :street %>
-          <%= f.input :city, priority: [ "Zachary" ], collection: [ "Zachary", "Baker", "Clinton"] %>
-          <%= f.input :state, priority: [ "Louisiana" ], collection: [ "Louisiana" ] %>
-          <%= f.input :zip_code, priority: ['70791'], collection: [ '70791', '70714', '70722']  %>
+          <%= f.input :city, priority: [ 'Zachary' ], collection: [ 'Zachary'] %>
+          <%= f.input :state, priority: [ 'Louisiana' ], collection: [ 'Louisiana' ] %>
+          <%= f.input :zip_code, priority: ['70791'], collection: [ '70791']  %>
           <%= f.input :map_heading %>
         </div>
       </fieldset>
@@ -22,7 +22,7 @@
         <div>
           <%= f.input :telephone, as: :tel %>
           <%= f.input :website, placeholder: 'www.website.com' %>
-          <%= f.input :category, collection: ['Arts, Crafts, & Collectibles', 'Baby', 'Beauty & Fragrances', 'Books & Magazines', 'Business to Business', 'Clothing, Accessories, & Shoes', 'Computers, Accessories, & Services', 'Construction', 'Education', 'Electronics & Telecom', 'Entertainment & Media', 'Food Retail & Service', 'Gifts & Flowers', 'Government', 'Health & Personal Care', 'Heating & Air Service','Home & Garden', 'Industrial', 'Legal & Financial Services', 'Nonprofit', 'Pets & Animals', 'Religion', 'Retail', 'Services - Other', 'Sports & Outdoors', 'Toys & Hobbies', 'Travel', 'Vehicle Sales', 'Vehicle Service & Accessories'] %>
+          <%= f.input :category, collection: ['Arts, Crafts, & Collectibles', 'Baby', 'Beauty & Fragrances', 'Books & Magazines', 'Business to Business', 'Clothing, Accessories, & Shoes', 'Computers, Accessories, & Services', 'Education', 'Electronics & Telecom', 'Entertainment & Media', 'Food Retail & Service', 'Gifts & Flowers', 'Government', 'Health & Personal Care', 'Heating & Air Service', 'Home Construction & Repair', 'Industrial', 'Legal & Financial Services', 'Nonprofit', 'Pets & Animals', 'Religion', 'Retail', 'Services - Other', 'Sports & Outdoors', 'Toys & Hobbies', 'Travel', 'Vehicle Sales', 'Vehicle Service & Accessories'] %>
         </div>
       </fieldset>
         
