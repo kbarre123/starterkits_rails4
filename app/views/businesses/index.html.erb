@@ -3,7 +3,7 @@
       <h1>Business List</h1>
       <p>
           <% if can? :create, @business %>
-              <%= link_to 'Add Business', new_business_path %>
+              <%= link_to('Add Business', new_business_path, :class => 'btn btn-primary') %>
           <% end %>
       </p>
       <%= form_tag businesses_path, :method => 'get', :id => "businesses_search" do %>
