@@ -1,10 +1,14 @@
 <% if !review.user_id.nil? %>
     <div class="well">
         <p>
-            <span class=""><%= review.review %></span><br>
+            <%= review.review %>
         </p>
         <p>
             Rating: <%= review.rating %>
+        </p>
+        <p>
+            <%= review.get_likes.size %> |
+            <%= review.get_dislikes.size %> 
         </p>
         <p>
             <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.reviewer %></span>
@@ -13,6 +17,10 @@
             <span class = "timestamp">
                 posted <%= time_ago_in_words(review.created_at) %> ago.
             </span>
+        </p>
+        <p>
+            <%= link_to "Upvote", like_business_review_path(review.business, review), method: :put %> |
+            <%= link_to "Downvote", dislike_business_review_path(review.business, review), method: :put %>
         </p>
         <% if can? :update, review %>
             <p>

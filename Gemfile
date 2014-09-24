@@ -85,6 +85,9 @@ gem 'settingslogic'
 gem 'geocoder'
 #gem 'gmaps4rails'
 
+# Like/dislike of Reviews
+gem 'acts_as_votable', '~> 0.10.0'
+
 group :development do
   # Docs
   gem 'sdoc', require: false    # bundle exec rake doc:rails

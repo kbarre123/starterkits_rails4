@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
     load_and_authorize_resource
+    skip_authorize_resource :only => [:upvote, :downvote]
+    skip_authorization_check :only => [:upvote, :downvote]
 
     before_filter :load_business
     
@@ -45,6 +47,20 @@ class ReviewsController < ApplicationController
         flash[:notice] = "Review deleted."
     end
 
+    def upvote
+        @review = Review.find(params[:id])
+        @review.liked_by current_user
+        redirect_to business_path(@business)
+        flash[:notice] = 'Review upvoted!'
+    end
+
+    def downvote
+        @review = Review.find(params[:id])
+        @review.downvote_from current_user
+        redirect_to business_path(@business)
+        flash[:notice] = 'Review downvoted!'
+    end
+
     private
 
     def load_business
@@ -52,6 +68,8 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:review, :rating)
+        params.require(:review).permit(:review, :rating)
     end
+
+    
 end

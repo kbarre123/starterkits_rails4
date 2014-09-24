@@ -43,7 +43,12 @@ Rails.application.routes.draw do
 
   # Businesses
   resources :businesses do
-    resources :reviews
+    resources :reviews do
+      member do
+        put 'like', to: "reviews#upvote"
+        put 'dislike', to: "reviews#downvote"
+      end
+    end
   end
 
   # Contact Us
