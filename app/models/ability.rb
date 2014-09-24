@@ -13,7 +13,7 @@ class Ability
     can :manage, Authentication, user_id: user.id
     can :read, :all
     can :manage, Review, :user_id => user.id
-    can :new, Contact
+    can :manage, Contact
     can :manage, Post, :user_id => user.id
     can :manage, Comment, :user_id => user.id
 
