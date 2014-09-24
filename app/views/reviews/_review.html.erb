@@ -7,10 +7,6 @@
             Rating: <%= review.rating %>
         </p>
         <p>
-            <%= review.get_likes.size %> |
-            <%= review.get_dislikes.size %> 
-        </p>
-        <p>
             <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.reviewer %></span>
         </p>
         <p>
@@ -19,8 +15,12 @@
             </span>
         </p>
         <p>
-            <%= link_to "Upvote", like_business_review_path(review.business, review), method: :put %> |
-            <%= link_to "Downvote", dislike_business_review_path(review.business, review), method: :put %>
+            <%= link_to like_business_review_path(review.business, review), method: :put, :class => "btn btn-primary btn-xs" do %>
+                <i class="glyphicon glyphicon-thumbs-up"></i> <%= review.get_likes.size %>
+            <% end %>
+            <%= link_to dislike_business_review_path(review.business, review), method: :put, :class => "btn btn-primary btn-xs" do %>
+                <i class="glyphicon glyphicon-thumbs-down"></i> <%= review.get_dislikes.size %>
+            <% end %>
         </p>
         <% if can? :update, review %>
             <p>
