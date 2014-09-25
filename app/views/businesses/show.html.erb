@@ -88,7 +88,7 @@
       Be the first to review this business!
     </p>
     <% else %>
-      <%= render @reviews.reverse_order %>
+      <%= render @reviews.sort_by { |p| [ -p.votes_for.size, p.created_at ] } %>
     <% end %>
     <div class="pagination">
       <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>

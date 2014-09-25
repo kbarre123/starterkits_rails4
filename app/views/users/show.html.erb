@@ -9,11 +9,26 @@
         <div>
             <% @reviews.each do |review| %>
                 <div class="well">
-                    <span class="bus_name_home"><%= link_to review.business.title, business_path(review.business) %></span><br>
-                    
-                    <%= review.review %><br>  
-                    Rating: <%= review.rating %><br>  
-                    <span class="timestamp">posted <%= time_ago_in_words(review.created_at) %> ago.</span>
+                    <p>
+                        <span class="bus_name_home"><%= link_to review.business.title, business_path(review.business) %></span>
+                    </p>
+                    <p>
+                        <%= review.review %>
+                    </p>  
+                    <p>
+                        Rating: <%= review.rating %>
+                    </p>  
+                    <p>
+                        <span class="timestamp">posted <%= time_ago_in_words(review.created_at) %> ago.</span>
+                    </p>
+                    <p>
+                        <%= link_to like_business_review_path(review.business, review), method: :put, :class => "btn btn-primary btn-xs" do %>
+                            <i class="glyphicon glyphicon-thumbs-up"></i> <%= review.get_likes.size %>
+                        <% end %>
+                        <%= link_to dislike_business_review_path(review.business, review), method: :put, :class => "btn btn-primary btn-xs" do %>
+                            <i class="glyphicon glyphicon-thumbs-down"></i> <%= review.get_dislikes.size %>
+                        <% end %>
+                    </p>
                     <% if can? :update, review %>
                         <span class = "timestamp">
                             <%= link_to "Edit", [:edit, review.business, review]%> |
