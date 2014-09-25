@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
     def create
         @review = @business.reviews.create(review_params)
         @review.user_id = current_user.id
-        @review.reviewer = current_user.first_name + ' ' + current_user.last_name
         
         if @review.save
             redirect_to business_path(@business)

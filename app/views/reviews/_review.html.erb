@@ -7,7 +7,7 @@
             Rating: <%= review.rating %>
         </p>
         <p>
-            <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.reviewer %></span>
+            <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.user.first_name + ' ' + review.user.last_name%></span>
         </p>
         <p>
             <span class = "timestamp">
