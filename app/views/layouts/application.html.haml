@@ -3,6 +3,7 @@
   %head
     %meta{charset: "utf-8"}/
     %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}
+    %meta{name: "google-site-verification", content: "lrGgXETTHXE65MBmXL287EnrR2REq5kjbhK3_rr4oRQ"}
     %title= content_for?(:title) ? yield(:title) : I18n.t('brand.name')
     %meta{content: (content_for?(:description) ? yield(:description) : I18n.t('brand.name')), name: 'description'}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
