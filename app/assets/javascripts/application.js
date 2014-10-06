@@ -29,4 +29,5 @@
 //= require businesses
 
 //= require_self
+//= require analytics
 //= require_tree .
