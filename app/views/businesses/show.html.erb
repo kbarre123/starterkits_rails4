@@ -4,7 +4,17 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
     <div class="jumbotron" id="bus_well">
-      <h3 class="bus_name"><strong><%= @business.title %></strong></h3>
+      <h3 class="bus_name">
+        <strong><%= @business.title %></strong>
+      </h3>
+      <!--<p> Facebook 'Like/Share' button. Related JS in business.js 
+        <div
+          class="fb-like"
+          data-share="true"
+          data-width="450"
+          data-show-faces="true">
+        </div>
+      </p>-->
       <p>
           <strong>Average Rating: </strong><%= number_with_precision(
               @business.reviews.average("rating"), :precision => 2 || 0) 
