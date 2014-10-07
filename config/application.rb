@@ -60,6 +60,9 @@ module StarterKit
       :host => "drunkmockingbird.herokuapp.com"
     }
 
+    # Enable garbage collection profiler for New Relic
+    GC::Profiler.enable
+
   end
 end
 
