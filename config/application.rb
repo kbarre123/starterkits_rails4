@@ -51,7 +51,7 @@ module StarterKit
       :port                 => 587,
       :domain               => "drunkmockingbird.herokuapp.com",
       :user_name            => "info.zacharyreview",
-      :password             => "a;fj8844",
+      :password             => 'bumblebee73#^bee',
       :authentication       => :plain,
       :enable_starttls_auto => true
     }
