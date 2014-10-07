@@ -5,6 +5,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', "<%= ENV['GOOGLE_ANALYTICS_ID']%>", 'drunkmockingbird.herokuapp.com');
+  ga('require', 'displayfeatures');
   ga('send', 'pageview');
 
 </script>
