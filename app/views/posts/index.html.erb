@@ -15,7 +15,9 @@
     
     <p>
     <div class="">
+      <% cache(cache_key_for_posts) do %>
         <%= render @posts.reverse_order %>
+      <% end %>
     </div>
     <div class="pagination">
       <%= will_paginate @post, renderer: BootstrapPagination::Rails %>

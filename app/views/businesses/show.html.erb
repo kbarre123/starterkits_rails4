@@ -94,11 +94,13 @@
   <div class="col-sm-12">
     <h2>Reviews</h2>
     <% if @business.reviews.count == 0 %>
-    <p class="bus_name_home">
-      Be the first to review this business!
-    </p>
+      <p class="bus_name_home">
+        Be the first to review this business!
+      </p>
     <% else %>
-      <%= render @reviews.sort_by { |p| [ -p.votes_for.size, p.created_at ] } %>
+      <% cache(cache_key_for_reviews) do %>
+        <%= render @reviews.sort_by { |p| [ -p.votes_for.size, p.created_at ] } %>
+      <% end %>
     <% end %>
     <div class="pagination">
       <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
