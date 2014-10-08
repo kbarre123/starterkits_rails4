@@ -10,25 +10,27 @@
             <td><%= " " %></td>
         <% end %> 
     </tr>
-    <% for business in @businesses %>
-        <tr>
-            <td>
-                <% if business.created_at > 7.days.ago %>
-                    <%= link_to business.title, business %> <span class="label label-primary">New</span>
-                <% else %>
-                    <%= link_to business.title, business %>
-                <% end %>
-            </td>
-            <td><%= business.category %></td>
-            <td>
-                <%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
-              %>
-            </td>
-            <% if can? :manage, business %>
-                <td><%= link_to "Edit", edit_business_path(business) %></td>
-                <td><%= link_to "Destroy", business, data: { confirm: 'Are you sure?' }, method: :delete %></td>
-            <% end %> 
-        </tr>
+    <% cache(cache_key_for_businesses) do %>
+        <% for business in @businesses %>
+            <tr>
+                <td>
+                    <% if business.created_at > 7.days.ago %>
+                        <%= link_to business.title, business %> <span class="label label-primary">New</span>
+                    <% else %>
+                        <%= link_to business.title, business %>
+                    <% end %>
+                </td>
+                <td><%= business.category %></td>
+                <td>
+                    <%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
+                  %>
+                </td>
+                <% if can? :manage, business %>
+                    <td><%= link_to "Edit", edit_business_path(business) %></td>
+                    <td><%= link_to "Destroy", business, data: { confirm: 'Are you sure?' }, method: :delete %></td>
+                <% end %> 
+            </tr>
+        <% end %>
     <% end %>
 </table>
 <div class="pagination">
