@@ -1,7 +1,7 @@
 module PostsHelper
-    def cache_key_for_posts
-        count          = Post.count
-        max_updated_at = Post.maximum(:updated_at).try(:utc).try(:to_s, :number)
-        "posts/all-#{count}-#{max_updated_at}"
-    end
+  def cache_key_for_posts(posts)
+    ids = posts.map(&:id).join('-')
+    max_updated_at = posts.map(&:id).max
+    "posts/#{ids}-#{max_updated_at.to_i}"
+  end
 end

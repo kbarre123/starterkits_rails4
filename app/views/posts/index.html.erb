@@ -15,12 +15,10 @@
     
     <p>
     <div class="">
-      <% cache(cache_key_for_posts) do %>
-        <%= render @posts.reverse_order %>
-      <% end %>
+      <%= render 'post' %>
     </div>
     <div class="pagination">
-      <%= will_paginate @post, renderer: BootstrapPagination::Rails %>
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
     </div>
   </div>
   <div class="col-md-4">

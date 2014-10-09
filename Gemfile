@@ -86,7 +86,7 @@ gem 'geocoder'
 #gem 'gmaps4rails'
 
 # Like/dislike of Reviews
-gem 'acts_as_votable', '~> 0.10.0'
+#gem 'acts_as_votable', '~> 0.10.0'
 
 group :development do
   # Docs

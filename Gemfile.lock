@@ -27,7 +27,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts_as_votable (0.10.0)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (3.0.1.20140826)
@@ -366,7 +365,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_votable (~> 0.10.0)
   addressable
   autoprefixer-rails
   awesome_print

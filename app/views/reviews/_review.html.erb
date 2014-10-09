@@ -1,35 +1,32 @@
-<% if !review.user_id.nil? %>
-    <div class="well">
-        <p>
+<% cache(cache_key_for_reviews(@reviews)) do %>
+  <% @reviews.each do |review| %>  
+    <% cache(review) do %>
+      <% if !review.user_id.nil? %>
+        <div class="well">
+          <p>
             <%= review.review %>
-        </p>
-        <p>
+          </p>
+          <p>
             Rating: <%= review.rating %>
-        </p>
-        <p>
+          </p>
+          <p>
             <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.user.first_name + ' ' + review.user.last_name%></span>
-        </p>
-        <p>
+          </p>
+          <p>
             <span class = "timestamp">
-                posted <%= time_ago_in_words(review.created_at) %> ago.
+              posted <%= time_ago_in_words(review.created_at) %> ago.
             </span>
-        </p>
-        <p>
-            <%= link_to like_business_review_path(review.business, review), method: :put, :class => "btn btn-primary btn-xs" do %>
-                <i class="glyphicon glyphicon-thumbs-up"></i> <%= review.get_likes.size %>
-            <% end %>
-            <%= link_to dislike_business_review_path(review.business, review), method: :put, :class => "btn btn-primary btn-xs" do %>
-                <i class="glyphicon glyphicon-thumbs-down"></i> <%= review.get_dislikes.size %>
-            <% end %>
-        </p>
-        <% if can? :update, review %>
+          </p>
+          <% if can? :update, review %>
             <p>
-                <span>
-                    <%= link_to "Edit", [:edit, review.business, review]%> | 
-                    <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' } %>
-                    </button>
-                </span>
+              <span>
+                <%= link_to "Edit", [:edit, review.business, review]%> | 
+                <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' } %>
+              </span>
             </p>
-        <% end %>
-    </div>
+          <% end %>
+        </div>
+      <% end %>    
+    <% end %>
+  <% end %>
 <% end %>

@@ -28,11 +28,9 @@
     <% if @post.comments.count == 0 %>
 
     <% else %>
-      <% cache(cache_key_for_comments) do %>
-        <%= render @comments.reverse_order %>
-      <% end %>
+      <%= render "comments/comment" %>
       <div class="pagination">
-          <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
+        <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
       </div>
     <% end %>
   </div>

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 10)
+    @posts = Post.all.reverse_order.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.paginate(page: params[:page], per_page: 10)
+    @comments = @post.comments.reverse_order.paginate(page: params[:page], per_page: 10)
   end
 
   def edit

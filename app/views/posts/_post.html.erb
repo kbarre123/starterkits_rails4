@@ -1,20 +1,27 @@
-<div class="well">
-    <p><%= post.text %></p>
-    <p>
+<!-- This is the view of the post that gets rendered on comments#index. The actual Post can
+be found at posts#show -->
+
+<% cache(cache_key_for_posts(@posts)) do %>
+  <% @posts.each do |post| %>  
+    <% cache(post) do %>
+    <div class="well">
+      <p><%= post.text %></p>
+      <p>
         <%= render 'users/avatar', user: post.user %> - <span class="reviewer_quote"><%= post.user.first_name %> <%= post.user.last_name %></span>
-    </p>
-    <span class = "timestamp">
+      </p>
+      <span class = "timestamp">
         posted <%= time_ago_in_words(post.created_at) %> ago.
-    </span>
-    <% if can? :update, post %>
+      </span>
+      <% if can? :update, post %>
         <%= link_to "Edit", edit_post_path(post) %> | 
         <%= link_to "Destroy", post, data: { confirm: 'Are you sure?' }, method: :delete %></br>
-    <% end %>
-    <p>
+      <% end %>
+      <p>
         <%= link_to(post) do %>
-          <%= pluralize(post.comments.count, 'comment') %>
+            <%= pluralize(post.comments.count, 'comment') %>
         <% end %>
-    </p>
-
-    
-</div>
+      </p>
+    </div>
+    <% end %>
+  <% end %>
+<% end %>

@@ -5,6 +5,6 @@ class Review < ActiveRecord::Base
   validates :rating, presence: true, numericality: { only_integer: true }
 
   # Like/dislike reviews
-  acts_as_votable
+  #acts_as_votable
   
 end

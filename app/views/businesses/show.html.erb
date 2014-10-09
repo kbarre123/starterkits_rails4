@@ -16,7 +16,7 @@
         </div>
       </p>-->
       <p>
-          <strong>Average Rating: </strong><%= number_with_precision(
+        <strong>Average Rating: </strong><%= number_with_precision(
               @business.reviews.average("rating"), :precision => 2 || 0) 
               %>
       </p>
@@ -98,13 +98,12 @@
         Be the first to review this business!
       </p>
     <% else %>
-      <% cache(cache_key_for_reviews) do %>
-        <%= render @reviews.sort_by { |p| [ -p.votes_for.size, p.created_at ] } %>
-      <% end %>
+      <%= render 'reviews/review' %>
+      <div class="pagination">
+        <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+      </div>
     <% end %>
-    <div class="pagination">
-      <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
-    </div>
+    
   </div><!-- col-sm-12 -->
 </div>
 <!-- Below is script for gmaps4rails

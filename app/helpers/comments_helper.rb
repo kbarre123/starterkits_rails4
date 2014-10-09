@@ -1,7 +1,7 @@
 module CommentsHelper
-    def cache_key_for_comments
-        count          = Comment.count
-        max_updated_at = Comment.maximum(:updated_at).try(:utc).try(:to_s, :number)
-        "comments/all-#{count}-#{max_updated_at}"
-    end
+  def cache_key_for_comments(comments)
+    ids = comments.map(&:id).join('-')
+    max_updated_at = comments.map(&:id).max
+    "comments/#{ids}-#{max_updated_at.to_i}"
+  end
 end
