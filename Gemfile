@@ -17,7 +17,7 @@ gem 'rb-inotify', :group => [:development, :test]   # monitor file changes witho
 
 # Monitoring
 gem 'rack-timeout', '~> 0.1.0beta3'
-gem 'newrelic_rpm', '>= 3.7.3'
+gem 'newrelic_rpm', '>= 3.9.5'
 #gem 'airbrake'                # use with airbrake.io or errbit
 # gem 'airbrake_user_attributes'  # use with self-hosted errbit; see config/initializers/airbrake.rb
 # gem 'rack-google-analytics'
