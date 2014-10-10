@@ -7,10 +7,10 @@ module BusinessesHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
-  def cache_key_for_businesses(businesses, suffix = '')
+  def cache_key_for_businesses(businesses)
     ids = businesses.map(&:id).join('-')
-    max_updated_at = businesses.map(&:id).max
-    "businesses/#{ids}-#{max_updated_at.to_i}#{suffix}"
+    max_updated_at = businesses.map(&:updated_at).max
+    "businesses/#{ids}-#{max_updated_at.to_i}"
   end
 
 end
