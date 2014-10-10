@@ -121,6 +121,7 @@ common: &default_settings
     # turn it off. This feature is only available at the Professional
     # and above product levels.
     enabled: true
+    explain_enabled: false
 
     # Threshold in seconds for when to collect a transaction
     # trace. When the response time of a controller action exceeds
@@ -170,6 +171,7 @@ common: &default_settings
   # overhead slightly on every memcached call, and can have security
   # implications if your memcached keys are sensitive
   # capture_memcache_keys: true
+
 
 # Application Environments
 # ------------------------------------------
