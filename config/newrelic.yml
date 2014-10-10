@@ -115,14 +115,14 @@ common: &default_settings
   # transactions and sends this to the New Relic service once a
   # minute. Included in the transaction is the exact call sequence of
   # the transactions including any SQL statements issued.
-  transaction_tracer: false # This config moved to the New Relic settings page
+  # transaction_tracer: false # This config moved to the New Relic settings page
 
     # Transaction tracer is enabled by default. Set this to false to
     # turn it off. This feature is only available at the Professional
     # and above product levels.
-    enabled: true
-    
-    explain_enabled: false
+    # enabled: true
+
+    # explain_enabled: false
 
     # Threshold in seconds for when to collect a transaction
     # trace. When the response time of a controller action exceeds
@@ -130,19 +130,19 @@ common: &default_settings
     # New Relic. Valid values are any float value, or (default) "apdex_f",
     # which will use the threshold for an dissatisfying Apdex
     # controller action - four times the Apdex T value.
-    transaction_threshold: apdex_f
+    # transaction_threshold: apdex_f
 
     # When transaction tracer is on, SQL statements can optionally be
     # recorded. The recorder has three modes, "off" which sends no
     # SQL, "raw" which sends the SQL statement in its original form,
     # and "obfuscated", which strips out numeric and string literals.
-    record_sql: obfuscated
+    # record_sql: obfuscated
 
     # Threshold in seconds for when to collect stack trace for a SQL
     # call. In other words, when SQL statements exceed this threshold,
     # then capture and send to New Relic the current stack trace. This is
     # helpful for pinpointing where long SQL calls originate from.
-    stack_trace_threshold: 0.500
+    # stack_trace_threshold: 0.500
 
     # Determines whether the agent will capture query plans for slow
     # SQL queries.  Only supported in mysql and postgres.  Should be
@@ -155,17 +155,17 @@ common: &default_settings
 
   # Error collector captures information about uncaught exceptions and
   # sends them to New Relic for viewing
-  error_collector: false # This config moved to the New Relic settings page
+  # error_collector: false # This config moved to the New Relic settings page
 
     # Error collector is enabled by default. Set this to false to turn
     # it off. This feature is only available at the Professional and above
     # product levels.
-    enabled: true
+    # enabled: true
 
     # To stop specific errors from reporting to New Relic, set this property
     # to comma-separated values.  Default is to ignore routing errors,
     # which are how 404's get triggered.
-    ignore_errors: "ActionController::RoutingError,Sinatra::NotFound"
+    # ignore_errors: "ActionController::RoutingError,Sinatra::NotFound"
 
   # If you're interested in capturing memcache keys as though they
   # were SQL uncomment this flag. Note that this does increase
