@@ -121,6 +121,7 @@ common: &default_settings
     # turn it off. This feature is only available at the Professional
     # and above product levels.
     enabled: true
+    
     explain_enabled: false
 
     # Threshold in seconds for when to collect a transaction
