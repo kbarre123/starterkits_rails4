@@ -393,7 +393,7 @@ DEPENDENCIES
   jquery-turbolinks
   memcachier
   minitest
-  newrelic_rpm (>= 3.9.5)
+  newrelic_rpm
   nprogress-rails
   omniauth (~> 1.2)
   omniauth-facebook
