@@ -6,6 +6,7 @@
     %meta{name: "google-site-verification", content: "lrGgXETTHXE65MBmXL287EnrR2REq5kjbhK3_rr4oRQ"}
     %title= content_for?(:title) ? yield(:title) : I18n.t('brand.name')
     %meta{content: (content_for?(:description) ? yield(:description) : I18n.t('brand.name')), name: 'description'}
+    %link{favicon_link_tag: 'apple-touch-icon-120x120-precomposed.png', rel: 'apple-touch-icon', type: 'image/png'}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     /[if lt IE 9]
       = javascript_include_tag 'ie', 'data-turbolinks-track' => true
