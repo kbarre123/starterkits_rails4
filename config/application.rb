@@ -39,7 +39,7 @@ module StarterKit
     # Serve vendor fonts
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
-    config.assets.precompile += %w( head )
+    config.assets.precompile += %w( head, Social-Icons.eot )
 
     config.to_prepare do
       Devise::Mailer.layout Rails.application.config.settings.mail.layout

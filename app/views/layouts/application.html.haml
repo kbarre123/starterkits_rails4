@@ -7,6 +7,7 @@
     %title= content_for?(:title) ? yield(:title) : I18n.t('brand.name')
     %meta{content: (content_for?(:description) ? yield(:description) : I18n.t('brand.name')), name: 'description'}
     %link{favicon_link_tag: 'apple-touch-icon-120x120-precomposed.png', rel: 'apple-touch-icon', type: 'image/png'}
+    %link{rel: "shortcut icon", href: "https://drunkmockingbird.herokuapp.com/favicon.ico"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     /[if lt IE 9]
       = javascript_include_tag 'ie', 'data-turbolinks-track' => true
