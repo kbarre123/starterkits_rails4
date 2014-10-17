@@ -21,6 +21,3 @@
 
 # Ignore Sublime Text workspace files
 /*.sublime-workspace
-
-# Ignore InkScape files
-/inkscape_project
