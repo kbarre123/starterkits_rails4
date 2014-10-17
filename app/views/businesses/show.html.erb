@@ -48,10 +48,7 @@
       </p>
       <p>
         <% if can? :update, @business %>
-            <%= link_to "Edit", edit_business_path(@business) %> | 
-        <% end %>
-        <% if can? :destroy, @business %>
-            <%= link_to "Destroy", @business, data: { confirm: 'Are you sure?' }, method: :delete %>
+            <%= link_to "Edit", edit_business_path(@business) %>
         <% end %>
       </p>
     </div><!-- Jumbotron -->

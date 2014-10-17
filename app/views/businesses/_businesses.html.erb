@@ -10,7 +10,6 @@
         <th><%= sortable "rating" %></th>
         <% if can? :manage, @businesses %>
           <td><%= " " %></td>
-          <td><%= " " %></td>
         <% end %> 
       </tr>
     </thead>
@@ -30,10 +29,8 @@
               <%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
               %>
             </td>
-            <% if can? :manage, business %>
+            <% if can? :update, business %>
               <td><%= link_to "Edit", edit_business_path(business) %></td>
-              <td><%= link_to "Destroy", business, data: { confirm: 'Are you sure?' }, method: :delete %>
-              </td>
             <% end %> 
           </tr>
         <% end %>
