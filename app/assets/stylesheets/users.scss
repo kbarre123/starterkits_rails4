@@ -1,0 +1,12 @@
+// Styling for user#home
+
+// If user has no reviews yet, post a message.
+.user_no_review {
+	padding-top: 5em;
+}
+
+// Businesses' name appears bolded in the user's page
+.bus_name_home {
+  color: $primary-color;
+  font-size: 1.5em;  
+}

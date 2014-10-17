@@ -11,3 +11,8 @@
 .reviewer_quote {
     color: #848484;   
 }
+
+.review_well {
+	box-shadow: 5px 5px 5px #888888;
+    @extend .well;
+}

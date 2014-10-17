@@ -2,7 +2,7 @@
   <% @reviews.each do |review| %>  
     <% cache(review) do %>
       <% if !review.user_id.nil? %>
-        <div class="well">
+        <div class="review_well">
           <p>
             <%= review.review %>
           </p>

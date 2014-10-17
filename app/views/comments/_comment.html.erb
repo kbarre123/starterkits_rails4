@@ -2,7 +2,7 @@
   <% @comments.each do |comment| %>  
     <% cache(comment) do %>
       <% if !comment.user_id.nil? %>
-        <div class="well">
+        <div class="comment_well">
           <p>
             <span><%= comment.text %></span><br>
             <%= render 'users/avatar', user: comment.user %> - <span class="reviewer_quote"><%= comment.user.first_name %> <%= comment.user.last_name %></span>

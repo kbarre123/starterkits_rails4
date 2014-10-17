@@ -4,7 +4,7 @@ be found at posts#show -->
 <% cache(cache_key_for_posts(@posts)) do %>
   <% @posts.each do |post| %>  
     <% cache(post) do %>
-    <div class="well">
+    <div class="post_well">
       <p><%= post.text %></p>
       <p>
         <%= render 'users/avatar', user: post.user %> - <span class="reviewer_quote"><%= post.user.first_name %> <%= post.user.last_name %></span>
