@@ -10,7 +10,8 @@ if ENV['RAILS_ENV'] == 'development' or not ENV['RAILS_ENV']
 else
 
   # production and staging
-  worker_processes 3
+  #worker_processes 3
+  worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
   timeout 15
   preload_app true
 
