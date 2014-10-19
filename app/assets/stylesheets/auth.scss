@@ -3,6 +3,12 @@
   max-width: 420px;
   margin: 0 auto;
 
+  color: #fff;
+  
+  .title {
+    color: #fff;
+  }
+
   .nav-tabs {
     margin-bottom: 20px;
   }
@@ -13,6 +19,7 @@
     .help-block {
       font-size: $font-size-base;
       font-weight: normal;
+      color: #fff;
       margin: 20px 0 -10px;
     }
   }
@@ -66,6 +73,7 @@
 }
 
 .auth__links {
+  color: #fff;
   @extend .help-block;
   margin: 30px 0;
 }

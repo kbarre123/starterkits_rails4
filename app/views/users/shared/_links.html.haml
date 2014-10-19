@@ -3,7 +3,7 @@
 - disable_forgot ||= false
 
 .auth__links
-  %label= I18n.t 'auth.links.title'
+  %label{:class => 'white_text'}= I18n.t 'auth.links.title'
   %ul
     - unless user_signed_in?
       - if !disable_login and controller_name != 'sessions'

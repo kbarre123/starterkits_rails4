@@ -52,8 +52,12 @@ body {
   background-color: #636363;
 }
 
-a, h1, h2 {
+a, h1, h2, h3 {
   color: $primary-color;
+}
+
+.white_text {
+  color: #fff;
 }
 
 .navbar-default .navbar-brand, .navbar .nav > li > a {
