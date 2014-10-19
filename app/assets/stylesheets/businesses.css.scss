@@ -21,7 +21,7 @@
 
 // Make Business well equal at least the height of the main map and street-view map
 #bus_well {
-    min-height: 570px;
+    min-height: 400px;
     background-color: #ffffff;
     @extend .well;
 }
