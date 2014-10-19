@@ -13,6 +13,7 @@
 }
 
 .review_well {
-	box-shadow: 5px 5px 5px $shadow-color;
+	background-color: #ffffff;
+	word-wrap: break-word;
     @extend .well;
 }

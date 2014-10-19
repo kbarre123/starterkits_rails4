@@ -22,7 +22,8 @@ common: &common
     phone: <%= ENV["OWNER_PHONE"] %>
 
   session:
-    key: '_starterkit_session'
+    #key: '_starterkit_session'
+    key: '_zacharyreview_session'
     expire_after: <%= 30.days %>
 
   rack:

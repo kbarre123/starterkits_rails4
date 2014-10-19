@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .post_well {
-	box-shadow: 5px 5px 5px $shadow-color;
+	background-color: #ffffff;
+	word-wrap: break-word;
     @extend .well;
 }

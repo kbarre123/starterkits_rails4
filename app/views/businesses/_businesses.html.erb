@@ -2,42 +2,44 @@
 <%= hidden_field_tag :sort, params[:sort] %>
 
 <%= cache(cache_key_for_businesses(@businesses)) do %>
-  <table class="table table-hover pretty">
-    <thead>
-      <tr>
-        <th><%= sortable "title" %></th>
-        <th><%= sortable "category" %></th>
-        <th><%= sortable "rating" %></th>
-        <% if can? :manage, @businesses %>
-          <td><%= " " %></td>
-        <% end %> 
-      </tr>
-    </thead>
-    <tbody>
-      <% @businesses.each do |business| %>
-        <% cache(business) do %>
-          <tr>
-            <td>
-              <% if business.created_at > 7.days.ago %>
-                <%= link_to business.title, business %> <span class="label label-primary">New</span>
-              <% else %>
-                <%= link_to business.title, business %>
-              <% end %>
-            </td>
-            <td><%= business.category %></td>
-            <td>
-              <%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
-              %>
-            </td>
-            <% if can? :update, business %>
-              <td><%= link_to "Edit", edit_business_path(business) %></td>
-            <% end %> 
-          </tr>
+  <div class="bus_index_well">
+    <table class="table table-hover pretty">
+      <thead>
+        <tr>
+          <th><%= sortable "title" %></th>
+          <th><%= sortable "category" %></th>
+          <th><%= sortable "rating" %></th>
+          <% if can? :manage, @businesses %>
+            <th><%= " " %></th>
+          <% end%> 
+        </tr>
+      </thead>
+      <tbody>
+        <% @businesses.each do |business| %>
+          <% cache(business) do %>
+            <tr>
+              <td>
+                <% if business.created_at > 7.days.ago %>
+                  <%= link_to business.title, business %> <span class="label label-primary">New</span>
+                <% else %>
+                  <%= link_to business.title, business %>
+                <% end %>
+              </td>
+              <td><%= business.category %></td>
+              <td>
+                <%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
+                %>
+              </td>
+              <% if can? :update, business %>
+                <td><%= link_to "Edit", edit_business_path(business) %></td>
+              <% end %> 
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="pagination">
-    <%= will_paginate @businesses, renderer: BootstrapPagination::Rails %>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <%= will_paginate @businesses, renderer: BootstrapPagination::Rails %>
+    </div>
   </div>
 <% end %>

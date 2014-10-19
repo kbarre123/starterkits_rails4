@@ -1,26 +1,28 @@
-<div class="row">
-  <div class="col-md-12">
-    <h3>Questions? Comments? Don't see your business on the list? Give us a shout!</h3></br>
-    <%= simple_form_for @contact, :url => contacts_path do |form| %>
-      <%= form.error_notification %>
-      <fieldset class="fields">
-        <%= form.input :name, :as => :hidden, :input_html => { 
-            :value => @user.first_name + " " + @user.last_name + "<" + @user.email + ">"
-          } %>
-        <%= form.input :email, :as => :hidden, :input_html => { :value => @user.email }%>
+<div class="well">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Questions? Comments? Don't see your business on the list? Give us a shout!</h3></br>
+      <%= simple_form_for @contact, :url => contacts_path do |form| %>
+        <%= form.error_notification %>
+        <fieldset class="fields">
+          <%= form.input :name, :as => :hidden, :input_html => { 
+              :value => @user.first_name + " " + @user.last_name + "<" + @user.email + ">"
+            } %>
+          <%= form.input :email, :as => :hidden, :input_html => { :value => @user.email }%>
 
-        <div class="field">
-          <%= form.input :subject %>
-        </div>
+          <div class="field">
+            <%= form.input :subject %>
+          </div>
+          
+          <div class="field">
+            <%= form.input :body, :as => :text %>
+          </div>
+        </fieldset>
         
-        <div class="field">
-          <%= form.input :body, :as => :text %>
-        </div>
-      </fieldset>
-      
-      <fieldset class="actions">
-        <%= form.submit 'Send', :class => 'btn btn-primary' %>
-      </fieldset>
-    <% end %>
-  </div>
+        <fieldset class="actions">
+          <%= form.submit 'Send', :class => 'btn btn-primary' %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>  
 </div>

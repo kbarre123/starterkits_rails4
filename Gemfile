@@ -66,7 +66,7 @@ gem 'omniauth', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 # gem 'omniauth-persona'
-# gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2'
 # gem 'omniauth-linkedin'
 
 # Admin
@@ -94,6 +94,7 @@ group :development do
 
   # Errors
   gem 'better_errors'
+  gem 'rails-footnotes', '>= 4.0.0', '<5'
   # gem 'binding_of_caller'     # extra features for better_errors
   # gem 'meta_request'          # for rails_panel chrome extension
 
