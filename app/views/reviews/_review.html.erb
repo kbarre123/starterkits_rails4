@@ -17,7 +17,7 @@
               posted <%= time_ago_in_words(review.created_at) %> ago.
             </span>
           </p>
-          <% if can? :update, review %>
+          <% if can? :manage, review %>
             <p>
               <span>
                 <%= link_to "Edit", [:edit, review.business, review]%> | 

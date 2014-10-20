@@ -30,7 +30,7 @@
                 <%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
                 %>
               </td>
-              <% if can? :update, business %>
+              <% if can? :manage, business %>
                 <td><%= link_to "Edit", edit_business_path(business) %></td>
               <% end %> 
             </tr>

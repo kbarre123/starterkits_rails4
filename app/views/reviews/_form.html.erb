@@ -1,14 +1,16 @@
-<%= simple_form_for([@business, @review]) do |f| %>
-  <%= f.error_notification %>
-  <fieldset class="fields">
-    <p>
-      <%= f.input :review, placeholder: 'New review...', label: false  %>
-    </p>
-    <p>
-      <%= f.input :rating, collection: 1..10 %>
-    </p>
-    <p>
-      <%= f.submit :class => 'btn btn-primary' %>
-    </p>
-  </fieldset>
-<% end %>
+<div class="well">
+  <%= simple_form_for([@business, @review]) do |f| %>
+    <%= f.error_notification %>
+    <fieldset class="fields">
+      <p>
+        <%= f.input :review, placeholder: 'New review...', :input_html => { :rows => 5 }, label: false %>
+      </p>
+      <p>
+        <%= f.input :rating, collection: 1..10, label: false %>
+      </p>
+      <p>
+        <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Back', business_path(@business), :class => 'btn btn-primary')  %>
+      </p>
+    </fieldset>
+  <% end %>
+</div>

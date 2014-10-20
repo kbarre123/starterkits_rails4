@@ -1,11 +1,13 @@
-<%= simple_form_for([@post]) do |f| %>
-  <%= f.error_notification %>
-  <fieldset class="fields">
-    <p>
-      <%= f.input :text %>
-    </p>
-    <p>
-      <%= f.submit :class => 'btn btn-primary' %>
-    </p>
-  </fieldset>
-<% end %>
+<div class="well">
+	<%= simple_form_for([@post]) do |f| %>
+	  <%= f.error_notification %>
+	  <fieldset class="fields">
+	    <p>
+	      <%= f.input :text, label: false %>
+	    </p>
+	    <p>
+	      <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Back', posts_path, :class => 'btn btn-primary')  %>
+	    </p>
+	  </fieldset>
+	<% end %>
+</div>
