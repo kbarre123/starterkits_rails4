@@ -2,6 +2,9 @@
 
 // If user has no reviews yet, post a message.
 .user_no_review {
+	h2 {
+		color: #fff;
+	}
 	padding-top: 5em;
 }
 
