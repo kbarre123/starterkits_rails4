@@ -5,11 +5,22 @@ class ReviewsController < ApplicationController
 
     before_filter :load_business
     
+    def index
+    end
+
+    def show
+        @review = Review.find(params[:id])
+        @commentable = @review
+        @comments = @commentable.comments
+        @comment = Comment.new
+    end
+
     def new
         @review = @business.reviews.build(review_params)
     end
 
-    def index
+    def edit
+        @review = Review.find(params[:id])
     end
 
     def create
@@ -23,10 +34,6 @@ class ReviewsController < ApplicationController
             redirect_to business_path(@business)
             flash[:danger] = 'Your review has an error. Please double check!'
         end
-    end
-
-    def edit
-        @review = Review.find(params[:id])
     end
 
     def update

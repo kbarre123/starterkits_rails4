@@ -12,9 +12,8 @@
           </span>
           <% if can? :manage, comment %>
             <span>
-              <%= link_to "Edit", [:edit, comment.post, comment]%> |
-
-              <%= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }  %>
+              <%= link_to "Edit", edit_polymorphic_path([@commentable, comment]) %> |
+              <%= link_to "Delete", [@commentable, comment], method: :delete, data: { confirm: "Are you sure?" } %>              
             </span>
           <% end %>
         </div>

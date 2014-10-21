@@ -44,11 +44,16 @@ Rails.application.routes.draw do
   # Businesses
   resources :businesses do
     resources :reviews do
-      member do
-        put 'like', to: "reviews#upvote"
-        put 'dislike', to: "reviews#downvote"
-      end
+      # Used for 'like' button (not Facebook like)
+      #member do
+      #  put 'like', to: "reviews#upvote"
+      #  put 'dislike', to: "reviews#downvote"
+      #end
     end
+  end
+
+  resources :reviews do
+    resources :comments
   end
 
   # Contact Us

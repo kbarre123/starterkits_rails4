@@ -1,37 +1,41 @@
 class CommentsController < ApplicationController
   #before_action :set_comment, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  before_filter :load_post
+  before_filter :load_commentable
+
+  def index
+    @comments = @commentable.comments
+  end
 
   # GET /comments/new
   def new
-    @comment = @post.comments.build(comment_params)
+    @comment = @commentable.comments.new
   end
 
   # GET /comments/1/edit
-  def edit
-    @comment = Comment.find(params[:id])
-  end
+  #def edit
+  #  @comment = Comment.find(params[:id])
+  #end
 
   # POST /comments
   def create
-    @comment = @post.comments.create(comment_params)
+    @comment = @commentable.comments.new(comment_params)
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to post_path(@post)
+      redirect_to @commentable
       flash[:notice] = 'Comment was successfully created.'
     else
-      redirect_to post_path(@post)
-          flash[:danger] = 'Your review has an error. Please double check!'
+      render :new
+      flash[:danger] = 'Your review has an error. Please double check!'
     end
   end
 
   # PATCH/PUT /comments/1
   def update
-    @comment = Comment.find(params[:id])
+    @comment = @commentable.comments.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to post_path(@post)
+      redirect_to @commentable
       flash[:notice] = 'Comment was successfully updated.'
     else
       render :edit
@@ -40,20 +44,25 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    @comment = @post.comments.find(params[:id])
+    @comment = @commentable.comments.find(params[:id])
     @comment.destroy
-    redirect_to posts_url
+    redirect_to @commentable
     flash[:notice] = 'Comment was successfully destroyed.'
   end
 
   private
 
-    def load_post
-        @post = Post.find(params[:post_id])
+    def load_commentable
+      resource, id = request.path.split('/')[1, 2]
+      @commentable = resource.singularize.classify.constantize.find(id)
     end
+
+    #def load_post
+    #    @post = Post.find(params[:post_id])
+    #end
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:text)
+      params.require(:comment).permit(:text, :commentable_id, :commentable_type)
     end
 end

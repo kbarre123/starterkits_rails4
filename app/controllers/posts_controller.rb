@@ -5,8 +5,19 @@ class PostsController < ApplicationController
     @posts = Post.all.reverse_order.paginate(page: params[:page], per_page: 10)
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @commentable = @post
+    @comments = @commentable.comments.reverse_order.paginate(page: params[:page], per_page: 10)
+    @comment = Comment.new
+  end
+
   def new
     @post = Post.new
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -18,16 +29,8 @@ class PostsController < ApplicationController
       flash[:notice] = 'New post created.'
     else
       render 'new'
+      flash[:danger] = 'Your post has an error. Please double check!'
     end
-  end
-
-  def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments.reverse_order.paginate(page: params[:page], per_page: 10)
-  end
-
-  def edit
-    @post = Post.find(params[:id])
   end
 
   def update

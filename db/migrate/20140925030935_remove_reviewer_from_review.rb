@@ -1,5 +1,5 @@
 class RemoveReviewerFromReview < ActiveRecord::Migration
   def change
-    remove_column :reviews, :reviewer
+    remove_column :reviews, :reviewer, :string
   end
 end

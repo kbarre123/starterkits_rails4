@@ -13,7 +13,7 @@
         <%= link_to "Destroy", @post, data: { confirm: 'Are you sure?' }, method: :delete %></br>
       <% end %>
       <div>
-        <%= simple_form_for([@post, @post.comments.build]) do |f| %>
+        <%= simple_form_for([@commentable, @comment]) do |f| %>
           <%= f.error_notification %>
           <p>
             <%= f.input :text, placeholder: 'New comment...', label: false  %>
