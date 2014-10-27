@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     #@comment = @commentable.comments.find(params[:id])
-
   end
 
   # POST /comments

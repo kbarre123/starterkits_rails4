@@ -1,12 +1,12 @@
 <div class="well">
-	<%= simple_form_for([@business, @commentable, @comment]) do |f| %>
+	<%= simple_form_for([@commentable, @comment]) do |f| %>
 	  <%= f.error_notification %>
 	  <fieldset class="fields">
 	    <p>
         <%= f.input :text, placeholder: 'New comment...', label: false, rows: 8 %>
 	    </p>
 	    <p>
-	      <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Back', [@business, @commentable], :class => 'btn btn-primary') %>
+	      <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Back', [@commentable], :class => 'btn btn-primary') %>
 	    </p>
 	  </fieldset>
 	<% end %>	
