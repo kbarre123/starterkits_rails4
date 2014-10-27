@@ -12,19 +12,18 @@
           <p>
             <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.user.first_name + ' ' + review.user.last_name%></span>
           </p>
-          <p>
-            <span class = "timestamp">
-              posted <%= time_ago_in_words(review.created_at) %> ago.
-            </span>
-          </p>
-          <% if can? :manage, review %>
-            <p>
-              <span>
-                <%= link_to "Edit", [:edit, review.business, review]%> | 
-                <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' } %>
-              </span>
-            </p>
+          <span class = "timestamp">
+            posted <%= time_ago_in_words(review.created_at) %> ago.
+          </span>
+          <% if can? :manage, review %>    
+            <%= link_to "Edit", edit_business_review_path(review.business, review)%> | 
+            <%= link_to "Delete", business_review_path(review.business, review), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
+          <p>
+            <%= link_to business_review_path(review.business, review) do %>
+                <%= pluralize(review.comments.count, 'comment') %>
+            <% end %>
+          </p>
         </div>
       <% end %>    
     <% end %>

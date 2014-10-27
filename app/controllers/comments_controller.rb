@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   #before_action :set_comment, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  before_filter :load_commentable
+  before_filter :load_commentable#, :get_business
 
   def index
     @comments = @commentable.comments
@@ -10,12 +10,14 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = @commentable.comments.new
+
   end
 
   # GET /comments/1/edit
-  #def edit
-  #  @comment = Comment.find(params[:id])
-  #end
+  def edit
+    #@comment = @commentable.comments.find(params[:id])
+
+  end
 
   # POST /comments
   def create
@@ -23,19 +25,21 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to @commentable
+      redirect_to :back
       flash[:notice] = 'Comment was successfully created.'
     else
       render :new
-      flash[:danger] = 'Your review has an error. Please double check!'
+      flash[:danger] = 'Your comment has an error. Please double check!'
     end
   end
 
   # PATCH/PUT /comments/1
   def update
     @comment = @commentable.comments.find(params[:id])
+    #binding.pry
     if @comment.update(comment_params)
-      redirect_to @commentable
+      redirect_to polymorphic_path(@commentable)
+      #redirect_to business_review_path(@commentable)
       flash[:notice] = 'Comment was successfully updated.'
     else
       render :edit
@@ -46,7 +50,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy
-    redirect_to @commentable
+    redirect_to :back
+    #redirect_to polymorphic_path(@commentable)
     flash[:notice] = 'Comment was successfully destroyed.'
   end
 
@@ -57,8 +62,8 @@ class CommentsController < ApplicationController
       @commentable = resource.singularize.classify.constantize.find(id)
     end
 
-    #def load_post
-    #    @post = Post.find(params[:post_id])
+    #def get_business 
+    #  @business = Business.find_by_id(:business_id)
     #end
 
     # Only allow a trusted parameter "white list" through.

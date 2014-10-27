@@ -9,18 +9,19 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        @review = Review.find(params[:id])
+        @review = @business.reviews.find(params[:id])
         @commentable = @review
-        @comments = @commentable.comments
+        @comments = @commentable.comments.reverse_order.paginate(page: params[:page], per_page: 10)
         @comment = Comment.new
     end
 
     def new
-        @review = @business.reviews.build(review_params)
+        @review = @business.reviews.new
+        #@review = @business.reviews.build(review_params)
     end
 
     def edit
-        @review = Review.find(params[:id])
+        @review = @business.reviews.find(params[:id])
     end
 
     def create
@@ -37,7 +38,7 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        @review = Review.find(params[:id])
+        @review = @business.reviews.find(params[:id])
         if @review.update_attributes(review_params)
             redirect_to business_path(@business)
             flash[:notice] = 'Review updated!'
