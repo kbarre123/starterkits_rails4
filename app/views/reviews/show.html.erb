@@ -8,23 +8,21 @@
       <span class = "timestamp">
         reviewed <%= time_ago_in_words(@review.created_at) %> ago.
       </span>
-      <p>
-        <% if can? :update, @review %>
-          <%= link_to "Edit", edit_business_review_path([@business, @review]) %> | 
-          <%= link_to "Destroy", business_review_path([@business, @review]), data: { confirm: 'Are you sure?' }, method: :delete %></br>
-        <% end %>
-      </p>
-      <%= simple_form_for([@commentable, @comment]) do |f| %> <!-- added @business here. remove to have posts work again -->
+      <% if can? :manage, @review %>    
+        <%= link_to "Edit", [:edit, @review.business, @review]%> | 
+        <%= link_to "Delete", [@review.business, @review], method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <%= simple_form_for([@review.business, @commentable, @comment]) do |f| %> <!-- added @business here. remove to have posts work again -->
         <%= f.error_notification %>
         <p>
           <%= f.input :text, placeholder: 'New comment...', label: false  %>
         </p>
         <p>
           <%= f.submit :class => 'btn btn-primary' %>
-          <%= link_to('Back to reviews', business_path(@business), :class => 'btn btn-primary')  %>
+          <%= link_to('Back', business_path(@business), :class => 'btn btn-primary')  %>
         </p>
       <% end %>
     </div>
   </div>
 </div>
-<!-- comments go here -->
+

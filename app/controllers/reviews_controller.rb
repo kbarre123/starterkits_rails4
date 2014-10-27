@@ -5,6 +5,10 @@ class ReviewsController < ApplicationController
 
     before_filter :load_business
     
+    def new
+        @review = @business.reviews.build(review_params)
+    end
+
     def index
     end
 
@@ -15,12 +19,8 @@ class ReviewsController < ApplicationController
         @comment = Comment.new
     end
 
-    def new
-        @review = @business.reviews.new
-    end
-
     def edit
-        @review = @business.reviews.find(params[:id])
+        @review = Review.find(params[:id])
     end
 
     def create
@@ -37,9 +37,9 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        @review = @business.reviews.find(params[:id])
+        @review = Review.find(params[:id])
         if @review.update_attributes(review_params)
-            redirect_to business_path(@business)
+            redirect_to business_review_path(@business, @review)
             flash[:notice] = 'Review updated!'
         else
             render :action => 'edit'
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        @review = @business.reviews.find(params[:id])
+        @review = Review.find(params[:id])
         @review.destroy
         redirect_to business_path(@business)
         flash[:notice] = "Review deleted."
