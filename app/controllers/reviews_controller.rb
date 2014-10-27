@@ -17,7 +17,6 @@ class ReviewsController < ApplicationController
 
     def new
         @review = @business.reviews.new
-        #@review = @business.reviews.build(review_params)
     end
 
     def edit

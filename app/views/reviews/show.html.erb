@@ -10,11 +10,11 @@
       </span>
       <p>
         <% if can? :update, @review %>
-          <%= link_to "Edit", edit_business_review_path(@business, @review) %> | 
-          <%= link_to "Destroy", business_review_path(@business, @review), data: { confirm: 'Are you sure?' }, method: :delete %></br>
+          <%= link_to "Edit", edit_business_review_path([@business, @review]) %> | 
+          <%= link_to "Destroy", business_review_path([@business, @review]), data: { confirm: 'Are you sure?' }, method: :delete %></br>
         <% end %>
       </p>
-      <%= simple_form_for([@business, @commentable, @comment]) do |f| %> <!-- added @business here. remove to have posts work again -->
+      <%= simple_form_for([@commentable, @comment]) do |f| %> <!-- added @business here. remove to have posts work again -->
         <%= f.error_notification %>
         <p>
           <%= f.input :text, placeholder: 'New comment...', label: false  %>
@@ -27,15 +27,4 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-12">
-    <% if @review.comments.count == 0 %>
-
-    <% else %>
-      <%= render "comments/comment" %>
-      <div class="pagination">
-        <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
-      </div>
-    <% end %>  
-  </div>
-</div> 
+<!-- comments go here -->
