@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   #before_action :set_comment, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  before_filter :load_commentable#, :get_business
+  before_filter :load_commentable
 
   def index
     @comments = @commentable.comments
@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     #@comment = @commentable.comments.find(params[:id])
-
   end
 
   # POST /comments
@@ -62,8 +61,17 @@ class CommentsController < ApplicationController
       @commentable = resource.singularize.classify.constantize.find(id)
     end
 
+    #def load_commentable
+    #  if params[:business_id]
+    #    @business = Business.find(params[:business_id])
+    #    @commentable = @business.reviews.find_by_id(params[:id])
+    #  else
+    #    @commentable = Post.find(params[:id])
+    #  end
+    #end
+
     #def get_business 
-    #  @business = Business.find_by_id(:business_id)
+    #  @business = Business.find(params[:business_id => id])
     #end
 
     # Only allow a trusted parameter "white list" through.

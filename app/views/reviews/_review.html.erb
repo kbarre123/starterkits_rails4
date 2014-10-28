@@ -16,11 +16,19 @@
             posted <%= time_ago_in_words(review.created_at) %> ago.
           </span>
           <% if can? :manage, review %>    
+<<<<<<< HEAD
             <%= link_to "Edit", [:edit, review.business, review]%> | 
             <%= link_to "Delete", [review.business, review], method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
           <p>
             <%= link_to business_review_path(review.business, review) do %>
+=======
+            <%= link_to("Edit", edit_review_path(review))%> | 
+            <%= link_to "Delete", review, method: :delete, confirm: 'Are you sure?' %>
+          <% end %>
+          <p>
+            <%= link_to review_path(review) do %>
+>>>>>>> working
                 <%= pluralize(review.comments.count, 'comment') %>
             <% end %>
           </p>

@@ -2,10 +2,12 @@ class ReviewsController < ApplicationController
     load_and_authorize_resource
     #skip_authorize_resource :only => [:upvote, :downvote]
     #skip_authorization_check :only => [:upvote, :downvote]
-
-    before_filter :load_business
     
     def new
+<<<<<<< HEAD
+=======
+        @business = Business.find(params[:business_id])
+>>>>>>> working
         @review = @business.reviews.build(review_params)
     end
 
@@ -13,7 +15,7 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        @review = @business.reviews.find(params[:id])
+        @review = Review.find(params[:id])
         @commentable = @review
         @comments = @commentable.comments.reverse_order.paginate(page: params[:page], per_page: 10)
         @comment = Comment.new
@@ -24,6 +26,7 @@ class ReviewsController < ApplicationController
     end
 
     def create
+        @business = Business.find(params[:business_id])
         @review = @business.reviews.create(review_params)
         @review.user_id = current_user.id
         
@@ -39,7 +42,11 @@ class ReviewsController < ApplicationController
     def update
         @review = Review.find(params[:id])
         if @review.update_attributes(review_params)
+<<<<<<< HEAD
             redirect_to business_review_path(@business, @review)
+=======
+            redirect_to review_path(@review)
+>>>>>>> working
             flash[:notice] = 'Review updated!'
         else
             render :action => 'edit'
@@ -49,7 +56,7 @@ class ReviewsController < ApplicationController
     def destroy
         @review = Review.find(params[:id])
         @review.destroy
-        redirect_to business_path(@business)
+        redirect_to business_path(@review.business)
         flash[:notice] = "Review deleted."
     end
 
@@ -68,10 +75,6 @@ class ReviewsController < ApplicationController
     #end
 
     private
-
-    def load_business
-        @business = Business.find(params[:business_id])
-    end
 
     def review_params
         params.require(:review).permit(:review, :rating)

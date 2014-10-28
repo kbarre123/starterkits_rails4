@@ -1,5 +1,5 @@
 <div class="well">
-  <%= simple_form_for([@business, @review]) do |f| %>
+  <%= simple_form_for(@review) do |f| %>
     <%= f.error_notification %>
     <fieldset class="fields">
       <p>
@@ -9,7 +9,7 @@
         <%= f.input :rating, collection: 1..10, label: false %>
       </p>
       <p>
-        <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Back', business_path(@business), :class => 'btn btn-primary')  %>
+        <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Cancel', review_path(@review), :class => 'btn btn-primary')  %>
       </p>
     </fieldset>
   <% end %>
