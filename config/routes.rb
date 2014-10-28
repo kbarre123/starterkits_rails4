@@ -43,14 +43,16 @@ Rails.application.routes.draw do
 
   # Businesses
   resources :businesses do
-    resources :reviews do
-      resources :comments
-    end
+    resources :reviews, shallow: true
       # Used for 'like' button (not Facebook like)
       #member do
       #  put 'like', to: "reviews#upvote"
       #  put 'dislike', to: "reviews#downvote"
       #end
+  end
+
+  resources :reviews, :only => [] do
+    resources :comments
   end
 
   # Contact Us

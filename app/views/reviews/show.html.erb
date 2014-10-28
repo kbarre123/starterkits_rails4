@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
+    <h1>Review for <%= @review.business.title %></h1>
     <div class="review_well">
       <p><%= @review.review %></p>
       <p>
@@ -9,17 +10,17 @@
         reviewed <%= time_ago_in_words(@review.created_at) %> ago.
       </span>
       <% if can? :manage, @review %>    
-        <%= link_to "Edit", [:edit, @review.business, @review]%> | 
-        <%= link_to "Delete", [@review.business, @review], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to "Edit", edit_review_path(@review) %> | 
+        <%= link_to "Delete", @review, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
-      <%= simple_form_for([@review.business, @commentable, @comment]) do |f| %> <!-- added @business here. remove to have posts work again -->
+      <%= simple_form_for([@commentable, @comment]) do |f| %> 
         <%= f.error_notification %>
         <p>
           <%= f.input :text, placeholder: 'New comment...', label: false  %>
         </p>
         <p>
           <%= f.submit :class => 'btn btn-primary' %>
-          <%= link_to('Back', business_path(@business), :class => 'btn btn-primary')  %>
+          <%= link_to('Back to business', business_path(@review.business), :class => 'btn btn-primary')  %>
         </p>
       <% end %>
     </div>
@@ -28,7 +29,11 @@
 <div class="row">
   <div class="col-sm-12">
     <% if @review.comments.count == 0 %>
-
+      <div class="well">
+        <p class="bus_name_home">
+          Be the first to comment on this review!!
+        </p>  
+      </div>
     <% else %>
       <%= render "comments/comment" %>
       <div class="pagination">
