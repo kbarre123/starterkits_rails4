@@ -4,10 +4,7 @@ class ReviewsController < ApplicationController
     #skip_authorization_check :only => [:upvote, :downvote]
     
     def new
-<<<<<<< HEAD
-=======
         @business = Business.find(params[:business_id])
->>>>>>> working
         @review = @business.reviews.build(review_params)
     end
 
@@ -42,11 +39,7 @@ class ReviewsController < ApplicationController
     def update
         @review = Review.find(params[:id])
         if @review.update_attributes(review_params)
-<<<<<<< HEAD
-            redirect_to business_review_path(@business, @review)
-=======
             redirect_to review_path(@review)
->>>>>>> working
             flash[:notice] = 'Review updated!'
         else
             render :action => 'edit'
