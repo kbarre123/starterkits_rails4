@@ -10,7 +10,7 @@ if ENV['RAILS_ENV'] == 'development' or not ENV['RAILS_ENV']
 else
 
   # production and staging
-  worker_processes 2
+  worker_processes 3
   #worker_processes Integer(ENV["WEB_CONCURRENCY"] || 2) # This came stock as || 4, 
   #but with the Sidekiq instance, there's just too much RAM being consumed
   timeout 15
