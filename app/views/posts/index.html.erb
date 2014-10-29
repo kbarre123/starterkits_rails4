@@ -9,7 +9,7 @@
       <%= simple_form_for([@post, @posts.build]) do |f| %>
         <%= f.error_notification %>
         <p>
-          <%= f.input :text, placeholder: 'New post...', label: false %>
+          <%= f.input :text, placeholder: 'New post...', label: false, :input_html => { :rows => 5 }  %>
         </p>
         <p>
           <%= f.submit :class => 'btn btn-primary' %>

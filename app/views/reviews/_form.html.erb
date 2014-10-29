@@ -6,7 +6,7 @@
         <%= f.input :review, placeholder: 'New review...', :input_html => { :rows => 5 }, label: false %>
       </p>
       <p>
-        <%= f.input :rating, collection: 1..10, label: false %>
+        <%= f.input :rating, collection: 1..10, label: false, :input_html => { :rows => 5 }  %>
       </p>
       <p>
         <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Cancel', review_path(@review), :class => 'btn btn-primary')  %>
