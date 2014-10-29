@@ -57,7 +57,7 @@ module StarterKit
     }
 
     config.action_mailer.default_url_options = {
-      :host => ENV["MAIL_HOST"]
+      :host => ENV["DOMAIN"]
     }
 
     # Enable garbage collection profiler for New Relic
