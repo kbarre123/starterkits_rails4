@@ -50,7 +50,7 @@ module StarterKit
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => ENV["DOMAIN"],
-      :user_name            => "info.zacharyreview",
+      :user_name            => ENV["GOOGLE_USERNAME"],
       :password             => ENV["GOOGLE_PASSWORD"],
       :authentication       => :plain,
       :enable_starttls_auto => true
