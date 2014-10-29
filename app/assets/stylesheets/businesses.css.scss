@@ -2,13 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Style side-bar ads on business#index
-//.bus_ad_side 
-
-// Style individual side-bar ads on business#index
-//#top
-//#mid
-//#bottom
+@media (min-width: $screen-md-min) {
+  #bus_well {
+    min-height: 662px;
+  } 
+}
 
 .add_business {
 	float: right;
@@ -22,13 +20,7 @@
 // Make Business well equal at least the height of the main map and street-view map
 #bus_well {
   @extend .well;
-  min-height: 400px;
   background-color: #ffffff;
-}
-
-.fill {
-	min-height: 100%;
-  height: 100%;
 }
 
 .bus_name {
