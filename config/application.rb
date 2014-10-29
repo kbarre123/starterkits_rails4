@@ -49,15 +49,15 @@ module StarterKit
     config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :domain               => "drunkmockingbird.herokuapp.com",
+      :domain               => ENV["DOMAIN"],
       :user_name            => "info.zacharyreview",
-      :password             => 'bumblebee73#^bee',
+      :password             => ENV["GOOGLE_PASSWORD"],
       :authentication       => :plain,
       :enable_starttls_auto => true
     }
 
     config.action_mailer.default_url_options = {
-      :host => "drunkmockingbird.herokuapp.com"
+      :host => ENV["MAIL_HOST"]
     }
 
     # Enable garbage collection profiler for New Relic
