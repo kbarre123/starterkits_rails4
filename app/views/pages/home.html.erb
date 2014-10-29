@@ -4,35 +4,49 @@
             <h1>Welcome to Zachary Review!</h1>
             <h2>Where community counts!</h2>
             <p>Find businesses and services that are right for you with the help of your neighbors.</p>
-            <p><a class="btn btn-lg btn-success" href="get_started" role="button">Get Started!</a></p>
+            <p><%= link_to('Get Started', new_user_registration_path, :class => 'btn btn-lg btn-success') %></p>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="col-md-4 marketing">
-        <%= image_tag "home/marketing_1.jpg", :class => 'img-circle marketing_img' %>
-          <h2>What's New?</h2>
-          <p>We've started off with some features that we're really excited about. Check it out!</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-md-4 marketing">
-        <%= image_tag "home/marketing_2.jpg", :class => 'img-circle marketing_img' %>
-          <h2>Upcoming Events</h2>
-          <p>There's always something going on here in Zachary. Check it out here.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-md-4 marketing">
-        <%= image_tag "home/marketing_3.jpg", :class => 'img-circle marketing_img' %>
-          <h2>Free Giveaways!</h2>
-          <p>Free stuff is cool. So, snag yourself some free stuff already!</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12" align="center">
-        <a class="twitter-timeline" href="https://twitter.com/zacharyreview" data-widget-id="503913469620404224">Tweets by @zacharyreview</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    </div>
-</div>
- 
+<div class="row featurette">
+  <div class="col-md-5">
+    <%= image_tag "home/marketing_1_large.jpg", :class => 'img-rounded img-responsive featurette_image' %>
+  </div>
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Log In. <span class="text-muted">Safe. Secure. EASY!</span></h2>
+    <p class="lead white_text">Click on <%= link_to "Sign Up", new_user_registration_path %> in the navigation bar up top. You can sign up with your Facebook or Twitter account, or use a plain 'ole email address. We never store your password and only use these services because the less passwords we all have to remember, the better! Amiright?</p>
+  </div>
+</div><!-- .row -->
 
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Rate. <span class="text-muted">Survey says?!</span></h2>
+    <p class="lead white_text">Click on <%= link_to "Business List", businesses_path %> in the navigation bar. All businesses are cateorized by industry and the list can be searched and sorted to find just what you're looking for. If you like, leave a constructive commenent and rate it from 1 to 10. Your rating is averaged with everyone else's so we can watch the cream rise to the top!</p>
+  </div>
+  <div class="col-md-5">
+    <%= image_tag "home/marketing_2_large.jpg", :class => 'img-rounded img-responsive featurette_image' %>
+  </div>
+</div><!-- .row -->
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-5">
+    <%= image_tag "home/marketing_3_large.jpg", :class => 'img-rounded img-responsive featurette_image' %>
+  </div>
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Repeat. <span class="text-muted">I said what!?</span></h2>
+    <p class="lead white_text">Change your mind? That's OK. Head over to <%= link_to "My Reviews", user_home_path %> in the navigation bar to manage your reviews. You can edit them, delete them, whatever you want...they're yours!</p>
+  </div>
+</div><!-- .row -->
+
+<hr class="featurette-divider">
+
+<div class="row">
+  <div class="col-md-12" align="center">
+      <a class="twitter-timeline" href="https://twitter.com/zacharyreview" data-widget-id="503913469620404224">Tweets by @zacharyreview</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+</div><!-- .row -->

@@ -1,6 +1,8 @@
-<div class="well">
-  <div class="row">
-    <div class="col-md-12">
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Contact Us</h1>
+    <div class="well">
       <h3>Questions? Comments? Don't see your business on the list? Give us a shout!</h3></br>
       <%= simple_form_for @contact, :url => contacts_path do |form| %>
         <%= form.error_notification %>
@@ -15,7 +17,7 @@
           </div>
           
           <div class="field">
-            <%= form.input :body, :as => :text %>
+            <%= form.input :body, :as => :text, :input_html => { :rows => 10 } %>
           </div>
         </fieldset>
         

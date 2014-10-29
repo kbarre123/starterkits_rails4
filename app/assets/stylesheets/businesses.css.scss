@@ -4,7 +4,7 @@
 
 @media (min-width: $screen-md-min) {
   #bus_well {
-    min-height: 662px;
+    min-height: 582px;
   } 
 }
 
@@ -21,6 +21,7 @@
 #bus_well {
   @extend .well;
   background-color: #ffffff;
+  padding-left: 3em;
 }
 
 .bus_name {
