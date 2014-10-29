@@ -11,7 +11,8 @@ else
 
   # production and staging
   worker_processes 2
-  #worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3) # This came stock as || 4, but not scaling down to 3; 4 uses too much memory
+  #worker_processes Integer(ENV["WEB_CONCURRENCY"] || 2) # This came stock as || 4, 
+  #but with the Sidekiq instance, there's just too much RAM being consumed
   timeout 15
   preload_app true
 
