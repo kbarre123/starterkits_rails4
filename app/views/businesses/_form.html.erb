@@ -1,34 +1,30 @@
-<div class="row">
-  <div class="col-md-12">
-    <%= simple_form_for @business do |f| %>
-      <%= f.error_notification %>
-      <p>
-        <%= f.input :title %>
-      </p>
+<%= simple_form_for @business do |f| %>
+  <%= f.error_notification %>
+  <p>
+    <%= f.input :title %>
+  </p>
 
-      <fieldset class="fields">
-        <legend>Address</legend>
-        <div>
-          <%= f.input :street %>
-          <%= f.input :city, priority: [ 'Zachary' ], collection: [ 'Zachary', 'Slaughter', 'Clinton', 'St. Francisville'] %>
-          <%= f.input :state, priority: [ 'Louisiana' ], collection: [ 'Louisiana' ] %>
-          <%= f.input :zip_code, priority: ['70791'], collection: [ '70791', '70777', '70722', '70775']  %>
-          <%= f.input :map_heading %>
-        </div>
-      </fieldset>
-      <br>
-      <fieldset class="fields">
-        <legend>General Info</legend>
-        <div>
-          <%= f.input :telephone, as: :tel %>
-          <%= f.input :website, placeholder: 'www.website.com' %>
-          <%= f.input :category, collection: ['Arts, Crafts, & Collectibles', 'Baby', 'Beauty & Fragrances', 'Books & Magazines', 'Business to Business', 'Clothing, Accessories, & Shoes', 'Computers, Accessories, & Services', 'Education', 'Electronics & Telecom', 'Entertainment & Media', 'Food Retail & Service', 'Gas Station', 'Gifts & Flowers', 'Government', 'Health & Personal Care', 'Heating & Air Service', 'Home Construction, Repair, & Maintenance', 'Industrial', 'Legal & Financial Services', 'Nonprofit', 'Pets & Animals', 'Religion', 'Retail', 'Services - Other', 'Sports & Outdoors', 'Toys & Hobbies', 'Travel', 'Vehicle Sales', 'Vehicle Service & Accessories'] %>
-        </div>
-      </fieldset>
-        
-      <p>
-        <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Cancel', businesses_path, :class => 'btn btn-primary')  %>
-      </p>
-    <% end %>
-  </div>
-</div>
+  <fieldset class="fields">
+    <legend>Address</legend>
+    <div>
+      <%= f.input :street %>
+      <%= f.input :city, priority: [ 'Zachary' ], collection: [ 'Zachary', 'Slaughter', 'Clinton', 'St. Francisville'] %>
+      <%= f.input :state, priority: [ 'Louisiana' ], collection: [ 'Louisiana' ] %>
+      <%= f.input :zip_code, priority: ['70791'], collection: [ '70791', '70777', '70722', '70775']  %>
+      <%= f.input :map_heading %>
+    </div>
+  </fieldset>
+  <br>
+  <fieldset class="fields">
+    <legend>General Info</legend>
+    <div>
+      <%= f.input :telephone, as: :tel %>
+      <%= f.input :website, placeholder: 'www.website.com' %>
+      <%= f.input :category, collection: ['Arts, Crafts, & Collectibles', 'Baby', 'Beauty & Fragrances', 'Books & Magazines', 'Business to Business', 'Clothing, Accessories, & Shoes', 'Computers, Accessories, & Services', 'Education', 'Electronics & Telecom', 'Entertainment & Media', 'Food Retail & Service', 'Gas Station', 'Gifts & Flowers', 'Government', 'Health & Personal Care', 'Heating & Air Service', 'Home Construction, Repair, & Maintenance', 'Industrial', 'Legal & Financial Services', 'Nonprofit', 'Pets & Animals', 'Religion', 'Retail', 'Services - Other', 'Sports & Outdoors', 'Toys & Hobbies', 'Travel', 'Vehicle Sales', 'Vehicle Service & Accessories'] %>
+    </div>
+  </fieldset>
+    
+  <p>
+    <%= f.submit :class => 'btn btn-primary' %> <%= link_to('Cancel', businesses_path, :class => 'btn btn-primary')  %>
+  </p>
+<% end %>
