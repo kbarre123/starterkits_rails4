@@ -14,8 +14,8 @@ common: &common
   social:
     facebook: 'https://www.facebook.com/zacharyreview'
     twitter: 'https://twitter.com/zacharyreview'
-    google_plus: 'https://plus.google.com/+KCBarrett'
-    linkedin: 'http://www.linkedin.com/in/'
+    #google_plus: 'https://plus.google.com/+KCBarrett'
+    #linkedin: 'http://www.linkedin.com/in/'
 
   contact:
     email: <%= ENV["OWNER_EMAIL"] %>
