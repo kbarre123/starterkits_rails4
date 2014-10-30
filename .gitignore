@@ -21,3 +21,5 @@
 
 # Ignore Sublime Text workspace files
 /*.sublime-workspace
+
+/.ssl_certificates
