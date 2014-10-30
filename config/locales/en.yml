@@ -30,7 +30,7 @@ en:
 
   emails:
     welcome:
-      subject: 'Welcome to Zachary'
+      subject: 'Welcome to Zachary Review!'
 
   auth:
     login:
