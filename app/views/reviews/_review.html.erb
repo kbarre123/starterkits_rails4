@@ -1,7 +1,7 @@
-<% cache(cache_key_for_reviews(@reviews)) do %>
-  <% @reviews.each do |review| %>  
-    <% if !review.user_id.nil? %>
-      <div class="review_well">
+<div class="review_well">
+  <% cache(cache_key_for_reviews(@reviews)) do %>
+    <% @reviews.each do |review| %>  
+      <% if !review.user_id.nil? %>
         <% cache(review) do %>
           <p>
             <%= review.review %>
@@ -21,11 +21,11 @@
             <% end %>
           </p>
         <% end %><!-- .cache -->
-        <% if can? :manage, review %>
-          <%= link_to "Edit", edit_review_path(review) %> | 
-          <%= link_to "Delete", review, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div><!-- .well -->
-    <% end %><!-- .user.id.nil? -->
-  <% end %><!-- review.each -->
-<% end %><!-- outer cache -->
+      </div><!-- .user.id.nil? -->
+    <% end %><!-- .reviews.each -->
+  <% end %><!-- outer cache -->
+  <% if can? :manage, review %>
+    <%= link_to "Edit", edit_review_path(review) %> | 
+    <%= link_to "Delete", review, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %><!-- .well -->
