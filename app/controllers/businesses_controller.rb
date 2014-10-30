@@ -20,7 +20,7 @@ class BusinessesController < ApplicationController
 
     def show
       @business = Business.find(params[:id])
-      @reviews = @business.reviews.reverse_order.paginate(page: params[:page], per_page: 5)
+      @reviews = @business.reviews.reverse_order.paginate(page: params[:page], per_page: 10)
       #@hash = Gmaps4rails.build_markers(@business) do |business, marker|
       #  marker.lat business.latitude
       #  marker.lng business.longitude
@@ -30,7 +30,7 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      @businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 10)
+      @businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 15)
     end
 
     def edit
