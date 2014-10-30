@@ -14,7 +14,7 @@ OmniAuth.config.path_prefix = Rails.application.config.auth.omniauth.path_prefix
 Rails.application.config.middleware.use OmniAuth::Builder do
   Rails.application.config.auth.providers.each do |k, v|
     opts = (v.try(:[], 'oauth') || {}).symbolize_keys
-    opts.merge!({client_options: {ssl: {ca_file: Rails.root.join('lib/assets/certs/cacert.pem').to_s}}})
+    opts.merge!({client_options: {ssl: {ca_file: Rails.root.join('/usr/lib/ssl/certs/ca-certificates.crt').to_s}}})
     provider k, v['key'], v['secret'], opts
   end
 end
