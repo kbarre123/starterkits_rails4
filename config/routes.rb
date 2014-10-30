@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # Static pages
   match '/error' => 'pages#error', via: [:get, :post], as: 'error_page'
   get '/terms' => 'pages#terms', as: 'terms'
-  get '/privacy' => 'pages#privacy', as: 'privacy'
+  #get '/privacy' => 'pages#privacy', as: 'privacy'
   get '/get_started' => 'pages#get_started', as: 'get_started'
 
   # OAuth
