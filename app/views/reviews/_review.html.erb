@@ -1,8 +1,8 @@
-<div class="review_well">
-  <% cache(cache_key_for_reviews(@reviews)) do %>
-    <% @reviews.each do |review| %>  
+<% cache(cache_key_for_reviews(@reviews)) do %>
+  <% @reviews.each do |review| %>  
+    <% cache(review) do %>
       <% if !review.user_id.nil? %>
-        <% cache(review) do %>
+        <div class="review_well">
           <p>
             <%= review.review %>
           </p>
@@ -15,17 +15,17 @@
           <span class = "timestamp">
             posted <%= time_ago_in_words(review.created_at) %> ago.
           </span>
+          <% if can? :manage, review %>
+            <%= link_to "Edit", edit_review_path(review) %> | 
+            <%= link_to "Delete", review, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
           <p>
             <%= link_to review_path(review) do %>
                 <%= pluralize(review.comments.count, 'comment') %>
             <% end %>
           </p>
-        <% end %><!-- .cache -->
-      </div><!-- .user.id.nil? -->
-    <% end %><!-- .reviews.each -->
-  <% end %><!-- outer cache -->
-  <% if can? :manage, review %>
-    <%= link_to "Edit", edit_review_path(review) %> | 
-    <%= link_to "Delete", review, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>    
+    <% end %>
   <% end %>
-<% end %><!-- .well -->
+<% end %>
