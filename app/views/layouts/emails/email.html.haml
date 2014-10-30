@@ -102,9 +102,9 @@
                         %table.six.columns
                           %tr
                             %td.last.right-text-pad
-                              //%p
-                              //  Phone:
-                              //  = Rails.application.config.settings.contact.phone
+                              -#%p
+                              -#  Phone:
+                              -#  = Rails.application.config.settings.contact.phone
                               %p
                                 Email:
                                 %a{href: "mailto:#{Rails.application.config.settings.contact.email}"}= Rails.application.config.settings.contact.email
