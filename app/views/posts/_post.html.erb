@@ -12,14 +12,8 @@ be found at posts#show -->
       <span class = "timestamp">
         posted <%= time_ago_in_words(post.created_at) %> ago.
       </span>
-      <% if can? :manage, post %>
-        <%= link_to "Edit", edit_post_path(post) %> | 
-        <% destroy_modal_id = 'destroy_modal_id' %>
-        <%= link_to I18n.t('post.destroy.link'), post, data: { confirm: I18n.t('post.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete %>
-        <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'post.destroy' %>
-      <% end %>
-      <p>
-        <%= link_to(post) do %>
+      <p class="comments_link">
+        <%= link_to(post, :class => "btn btn-default") do %>
             <%= pluralize(post.comments.count, 'comment') %>
         <% end %>
       </p>

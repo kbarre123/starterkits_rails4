@@ -22,7 +22,8 @@
         </fieldset>
         
         <fieldset class="actions">
-          <%= form.submit 'Send', :class => 'btn btn-primary' %>
+          <%= form.submit 'Send', :class => 'btn btn-success' %>
+          <%= link_to('Cancel', root_path, :class => 'btn btn-danger') %>
         </fieldset>
       <% end %>
     </div>

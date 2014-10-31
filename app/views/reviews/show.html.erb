@@ -10,10 +10,13 @@
         reviewed <%= time_ago_in_words(@review.created_at) %> ago.
       </span>
       <% if can? :manage, @review %>
-        <%= link_to "Edit", edit_review_path(@review) %> | 
-        <% destroy_modal_id = 'destroy_modal_id' %>
-        <%= link_to I18n.t('post.destroy.link'), @review, data: { confirm: I18n.t('review.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete %>
-        <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'review.destroy' %>
+        <p class="comments_link">
+          <%= link_to("Edit", edit_review_path(@review), :class => "btn btn-warning") %>
+          <% destroy_modal_id = 'destroy_modal_id' %>
+          <%= link_to I18n.t('post.destroy.link'), @review, data: { confirm: I18n.t('review.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete, :class => "btn btn-danger" %>
+          <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'review.destroy' %>  
+        </p>
+        
       <% end %>
       <%= simple_form_for([@commentable, @comment]) do |f| %>
         <%= f.error_notification %>
@@ -21,8 +24,8 @@
           <%= f.input :text, placeholder: 'New comment...', label: false, :input_html => { :rows => 5 }   %>
         </p>
         <p>
-          <%= f.submit :class => 'btn btn-primary' %>
-          <%= link_to('Back to business', business_path(@review.business), :class => 'btn btn-primary')  %>
+          <%= f.submit :class => 'btn btn-success' %>
+          <%= link_to('Back', business_path(@review.business), :class => 'btn btn-primary')  %>
         </p>
       <% end %>
     </div>

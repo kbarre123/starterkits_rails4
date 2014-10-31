@@ -10,14 +10,9 @@
           <span class = "timestamp">
             posted <%= time_ago_in_words(comment.created_at) %> ago.
           </span>
-          <% if can? :manage, comment %>
-            <span>
-              <%= link_to "Edit", edit_polymorphic_path([@commentable, comment]) %> |
-              <% destroy_modal_id = 'destroy_modal_id' %>
-              <%= link_to I18n.t('comment.destroy.link'), [@commentable, comment], data: { confirm: I18n.t('comment.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete %>
-              <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'comment.destroy' %>
-            </span>
-          <% end %>
+          <p class="comments_link">
+            <%= link_to "View Comment", polymorphic_path([@commentable, comment]), :class => 'btn btn-default' %>
+          </p>
         </div>
       <% end %>
     <% end %>

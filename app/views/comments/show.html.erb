@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Comment by <%= @comment.user.first_name %> <%= @comment.user.last_name %></h1>
+    <div class="review_well">
+      <p><%= @comment.text %></p>
+      <p>
+        <%= render 'users/avatar', user: @comment.user %> - <span class="reviewer_quote"><%= @comment.user.first_name %> <%= @comment.user.last_name %></span>
+      </p>
+      <span class = "timestamp">
+        comment made <%= time_ago_in_words(@comment.created_at) %> ago.
+      </span>
+        <p class="comments_link">
+          <%= link_to("Back", polymorphic_path([@commentable]), :class => "btn btn-primary") %>
+          <% if can? :manage, @comment %>
+            <%= link_to("Edit", edit_polymorphic_path([@commentable, @comment]), :class => "btn btn-warning") %>
+            <% destroy_modal_id = 'destroy_modal_id' %>
+            <%= link_to I18n.t('comment.destroy.link'), [@commentable, @comment], data: { confirm: I18n.t('comment.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete, :class => "btn btn-danger" %>
+            <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'comment.destroy' %>
+          <% end %>
+        </p>
+    </div>
+  </div>
+</div>

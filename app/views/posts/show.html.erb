@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
+    <h1>Post by <%= @post.user.first_name %> <%= @post.user.last_name %></h1>
     <div class="post_well">
       <p><%= @post.text %></p>
       <p>
@@ -8,11 +9,13 @@
       <span class = "timestamp">
         posted <%= time_ago_in_words(@post.created_at) %> ago.
       </span>
-      <% if can? :update, @post %>
-        <%= link_to "Edit", edit_post_path(@post) %> | 
-        <% destroy_modal_id = 'destroy_modal_id' %>
-        <%= link_to I18n.t('post.destroy.link'), @post, data: { confirm: I18n.t('post.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete %>
-        <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'post.destroy' %>
+      <% if can? :manage, @post %>
+        <p class="comments_link">
+          <%= link_to("Edit", edit_post_path(@post), :class => "btn btn-warning") %>
+          <% destroy_modal_id = 'destroy_modal_id' %>
+          <%= link_to I18n.t('post.destroy.link'), @post, data: { confirm: I18n.t('post.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete, :class => "btn btn-danger" %>
+          <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'post.destroy' %>
+        </p>
       <% end %>
       <div>
         <%= simple_form_for([@commentable, @comment]) do |f| %>
@@ -21,8 +24,8 @@
             <%= f.input :text, placeholder: 'New comment...', label: false, :input_html => { :rows => 5 } %>
           </p>
           <p>
-            <%= f.submit :class => 'btn btn-primary' %>
-            <%= link_to('Back to Posts', posts_path, :class => 'btn btn-primary')  %>
+            <%= f.submit :class => 'btn btn-success' %>
+            <%= link_to('Back', posts_path, :class => 'btn btn-primary')  %>
           </p>
         <% end %>
       </div>

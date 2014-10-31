@@ -15,14 +15,8 @@
           <span class = "timestamp">
             posted <%= time_ago_in_words(review.created_at) %> ago.
           </span>
-          <% if can? :manage, review %>
-            <%= link_to "Edit", edit_review_path(review) %> | 
-            <% destroy_modal_id = 'destroy_modal_id' %>
-            <%= link_to I18n.t('review.destroy.link'), review_path(review), data: { confirm: I18n.t('review.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete %>
-            <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'review.destroy' %>
-          <% end %>
-          <p>
-            <%= link_to review_path(review) do %>
+          <p class="comments_link">
+            <%= link_to(review, :class => 'btn btn-default') do %>
                 <%= pluralize(review.comments.count, 'comment') %>
             <% end %>
           </p>

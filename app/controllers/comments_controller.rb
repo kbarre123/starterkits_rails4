@@ -13,11 +13,6 @@ class CommentsController < ApplicationController
 
   end
 
-  # GET /comments/1/edit
-  def edit
-    #@comment = @commentable.comments.find(params[:id])
-  end
-
   # POST /comments
   def create
     @comment = @commentable.comments.new(comment_params)
@@ -30,6 +25,15 @@ class CommentsController < ApplicationController
       render :new
       flash[:danger] = 'Your comment has an error. Please double check!'
     end
+  end
+
+  def show
+    @comment = @commentable.comments.find(params[:id])
+  end
+
+  # GET /comments/1/edit
+  def edit
+    #@comment = @commentable.comments.find(params[:id])
   end
 
   # PATCH/PUT /comments/1
@@ -49,7 +53,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy
-    redirect_to :back
+    redirect_to polymorphic_path(@commentable)
     #redirect_to polymorphic_path(@commentable)
     flash[:notice] = 'Comment was successfully destroyed.'
   end
