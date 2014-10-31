@@ -86,6 +86,33 @@ en:
       submit: 'Yes, delete my account'
       cancel: 'Cancel'
 
+  review:
+    destroy:
+      link: "Delete"
+      prompt: "Delete your review?"
+      warning: 'Your review will be permanently deleted. This cannot be undone.'
+      notice: ''
+      submit: 'Yes, delete my review'
+      cancel: 'Cancel'
+
+  comment:
+    destroy:
+      link: "Delete"
+      prompt: "Delete your comment?"
+      warning: 'Your comment will be permanently deleted. This cannot be undone.'
+      notice: ''
+      submit: 'Yes, delete my comment'
+      cancel: 'Cancel'
+
+  post:
+    destroy:
+      link: "Delete"
+      prompt: "Delete your post?"
+      warning: 'Your post will be permanently deleted. This cannot be undone.'
+      notice: ''
+      submit: 'Yes, delete my post'
+      cancel: 'Cancel'
+      
   accounts:
     connected: 'Success! Your social account is now connected.'
     updated: 'Success! Your social account is up-to-date.'

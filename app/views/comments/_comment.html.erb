@@ -13,7 +13,9 @@
           <% if can? :manage, comment %>
             <span>
               <%= link_to "Edit", edit_polymorphic_path([@commentable, comment]) %> |
-              <%= link_to "Delete", [@commentable, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+              <% destroy_modal_id = 'destroy_modal_id' %>
+              <%= link_to I18n.t('comment.destroy.link'), [@commentable, comment], data: { confirm: I18n.t('comment.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete %>
+              <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'comment.destroy' %>
             </span>
           <% end %>
         </div>

@@ -10,7 +10,9 @@
       </span>
       <% if can? :update, @post %>
         <%= link_to "Edit", edit_post_path(@post) %> | 
-        <%= link_to "Destroy", @post, data: { confirm: 'Are you sure?' }, method: :delete %></br>
+        <% destroy_modal_id = 'destroy_modal_id' %>
+        <%= link_to I18n.t('post.destroy.link'), @post, data: { confirm: I18n.t('post.destroy.prompt'), confirm_modal: "##{destroy_modal_id}" }, method: :delete %>
+        <%= render 'layouts/destroy_modal', id: destroy_modal_id, i18n_prefix: 'post.destroy' %>
       <% end %>
       <div>
         <%= simple_form_for([@commentable, @comment]) do |f| %>
