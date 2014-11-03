@@ -1,6 +1,3 @@
-<%= hidden_field_tag :direction, params[:direction] %>
-<%= hidden_field_tag :sort, params[:sort] %>
-
 <%= cache(cache_key_for_businesses(@businesses)) do %>
   <div class="bus_index_well">
     <table class="table table-hover pretty">
