@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
     end
 
     def index
-        @reviews = Review.limit(15).reverse_order.paginate(page: params[:page], per_page: 10, 
-                         :total_entries => 20)
+        @reviews = Review.all.reverse_order.paginate(page: params[:page], per_page: 10, 
+            :total_entries => 20)
     end
 
     def show
@@ -51,7 +51,11 @@ class ReviewsController < ApplicationController
     def destroy
         @review = Review.find(params[:id])
         @review.destroy
-        redirect_to business_path(@review.business)
+            if URI(request.referer).path == user_home_path
+                redirect_to :back
+            else
+                redirect_to business_path(@review.business)
+            end
         flash[:notice] = "Review deleted."
     end
 
