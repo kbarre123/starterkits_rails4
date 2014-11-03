@@ -11,8 +11,14 @@
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         %li= link_to I18n.t('nav.business_index'), businesses_path
+        %li.dropdown
+          %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+            Reviews
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to I18n.t('nav.reviews_index'), reviews_path
+            %li= link_to I18n.t('nav.user_home'), user_home_path
         %li= link_to I18n.t('nav.posts'), posts_path
-        %li= link_to I18n.t('nav.user_home'), user_home_path
         %li= link_to I18n.t('nav.contact'), new_contact_path
         %li.dropdown
           %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}

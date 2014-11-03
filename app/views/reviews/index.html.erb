@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>Latest Reviews</h2>
+    <br>
+    <% cache(cache_key_for_latest_reviews(@reviews)) do %>
+      <% @reviews.each do |review| %>
+        <% cache(review) do %>
+          <% if !review.user_id.nil? %>
+            <div class="review_well">
+              <p>
+                <span class="bus_name_home"><%= link_to review.business.title, business_path(review.business) %></span>
+              </p>
+              <p>
+                <%= review.review %>
+              </p>
+              <p>
+                Rating: <%= review.rating %>
+              </p>
+              <p>
+                <%= render 'users/avatar', user: review.user %> - <span class="reviewer_quote"><%= review.user.first_name + ' ' + review.user.last_name%></span>
+              </p>
+              <span class = "timestamp">
+                posted <%= time_ago_in_words(review.created_at) %> ago.
+              </span>
+              <p class="comments_link">
+                <%= link_to(review, :class => 'btn btn-default') do %>
+                    <%= pluralize(review.comments.count, 'comment') %>
+                <% end %>
+              </p>
+            </div>
+          <% end %>    
+        <% end %><!-- cache(review) -->
+      <% end %> <!-- reviews.each -->
+    <% end %><!-- cache(@reviews) -->
+    <div class="pagination">
+        <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div><!-- col-sm-12 -->
+</div><!-- row -->

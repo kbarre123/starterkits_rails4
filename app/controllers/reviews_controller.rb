@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
     end
 
     def index
+        @reviews = Review.limit(15).reverse_order.paginate(page: params[:page], per_page: 10, 
+                         :total_entries => 20)
     end
 
     def show

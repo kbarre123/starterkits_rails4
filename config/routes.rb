@@ -51,6 +51,8 @@ Rails.application.routes.draw do
       #end
   end
 
+  resources :reviews, :only => [:index]
+
   resources :reviews, :only => [] do
     resources :comments
   end
