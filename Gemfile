@@ -59,7 +59,6 @@ gem 'will_paginate-bootstrap'
 # Search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-gem 'bonsai-elasticsearch-rails'
 
 # Email
 gem 'premailer-rails'
@@ -167,5 +166,6 @@ group :production do
   gem 'memcachier'              # heroku add-on for auto config of dalli
   gem 'unicorn'
   gem 'rails_12factor'          # https://devcenter.heroku.com/articles/rails4
+  gem 'bonsai-elasticsearch-rails' # Initialize elasticsearch on Heroku
 end
 
