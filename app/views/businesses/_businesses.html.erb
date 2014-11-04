@@ -3,29 +3,19 @@
     <table class="table table-hover pretty">
       <thead>
         <tr>
-          <th><%= sortable "title" %></th>
-          <th><%= sortable "category" %></th>
-          <th><%= sortable "rating" %></th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Rating</th>
         </tr>
       </thead>
       <tbody>
-        <% @businesses.each do |business| %>
-          <% cache(business) do %>
-            <tr>
-              <td>
-                <% if business.created_at > 7.days.ago %>
-                  <%= link_to business.title, business %> <span class="label label-primary">New</span>
-                <% else %>
-                  <%= link_to business.title, business %>
-                <% end %>
-              </td>
-              <td><%= business.category %></td>
-              <td>
-                <%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
-                %>
-              </td>
-            </tr>
-          <% end %>
+        <% @businesses.__send__ controller.action_name == 'search' ? :each_with_hit : :each do |business, hit| %>
+          <tr>
+            <td><%= hit.try(:highlight).try(:title)   ? hit.highlight.title.join.html_safe : business.title %></td>
+            <td><%= hit.try(:highlight).try(:category) ? hit.highlight.category.join.html_safe : business.category %></td>
+            <td><%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
+                %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>

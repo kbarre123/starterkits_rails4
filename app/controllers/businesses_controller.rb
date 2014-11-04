@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
     load_and_authorize_resource
 
-    helper_method :sort_column, :sort_direction
+    #helper_method :sort_column, :sort_direction
 
     def new
         @business = Business.new
@@ -30,7 +30,14 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      @businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 15)
+      #@businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 15)
+      @businesses = Business.page(params[:page])
+    end
+
+    def search
+      @businesses = Business.search(params[:q]).page(params[:page]).records
+
+      render action: "index"
     end
 
     def edit
@@ -62,12 +69,12 @@ class BusinessesController < ApplicationController
           :telephone, :website, :category, :longitude, :latitude)
     end
 
-    def sort_column
-      Business.column_names.include?(params[:sort]) ? params[:sort] : "title"
-    end
+    #def sort_column
+    #  Business.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    #end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
+    #def sort_direction
+    #  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    #end
 
 end

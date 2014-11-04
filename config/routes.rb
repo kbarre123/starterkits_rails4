@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   # Businesses
   resources :businesses do
+    collection { get :search }
     resources :reviews, shallow: true
       # Used for 'like' button (not Facebook like)
       #member do
