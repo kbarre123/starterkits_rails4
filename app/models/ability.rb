@@ -16,6 +16,7 @@ class Ability
     can :manage, Contact
     can :manage, Post, :user_id => user.id
     can :manage, Comment, :user_id => user.id
+    can :search, Business
 
     if user.is_admin? && defined? RailsAdmin
       # Allow everything
