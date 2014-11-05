@@ -33,9 +33,12 @@ class Business < ActiveRecord::Base
       __elasticsearch__.search(
         {
           query: {
-            multi_match: {
-              query: query,
-              fields: ['title^10', 'category']
+            flt_field: {
+              title: {
+                like_text: query,
+                max_query_terms: 5,
+                fuzziness: "AUTO"
+              }
             }
           },
           highlight: {
