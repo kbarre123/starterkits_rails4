@@ -11,7 +11,7 @@
       <tbody>
         <% @businesses.__send__ controller.action_name == 'search' ? :each_with_hit : :each do |business, hit| %>
           <tr>
-            <td><%= hit.try(:highlight).try(:title)   ? hit.highlight.title.join.html_safe : business.title %></td>
+            <td><%= hit.try(:highlight).try(:title)   ? link_to(hit.highlight.title.join.html_safe, business) : link_to( business.title, business) %></td>
             <td><%= hit.try(:highlight).try(:category) ? hit.highlight.category.join.html_safe : business.category %></td>
             <td><%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
                 %></td>

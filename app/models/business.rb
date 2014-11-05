@@ -1,5 +1,5 @@
 class Business < ActiveRecord::Base
-    Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL'], log: true
+    #Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL'], log: true
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
