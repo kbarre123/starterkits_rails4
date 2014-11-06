@@ -33,33 +33,10 @@ class Business < ActiveRecord::Base
       __elasticsearch__.search(
         {
           query: {
-            flt_field: {
-              title: {
-                like_text: query,
-                max_query_terms: 5,
-                fuzziness: "AUTO"
-              }
+            fuzzy_like_this: {
+              fields: ["title", "category"], 
+              like_text: query
             }
-          #  bool: {
-          #    should: [
-          #      {
-          #        flt_field: {
-          #          title: {
-          #            like_text: query,
-          #            max_query_terms: 5,
-          #            fuzziness: "AUTO"
-          #          }
-          #        },
-          #        flt_field: {
-          #          category: {
-          #            like_text: query,
-          #            max_query_terms: 5,
-          #            fuzziness: "AUTO"
-          #          }
-          #        }
-          #      }
-          #    ]
-          #  }
           },
           highlight: {
             pre_tags: ['<em class="label label-highlight">'],
