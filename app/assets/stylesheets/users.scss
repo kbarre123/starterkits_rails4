@@ -1,5 +1,16 @@
 // Styling for user#home
 
+// Style div for user info at top of home page
+.user_home_info {
+	p, span {
+		color: #fff;
+		font-size: 2em;
+		padding-top: .5em;
+	}
+	padding-top: 2em;
+	
+}
+
 // If user has no reviews yet, post a message.
 .user_no_review {
 	h2 {

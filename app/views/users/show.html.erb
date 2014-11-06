@@ -1,11 +1,17 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h2><%= @user.first_name %>'s Reviews</h2>
-    <% if @user.reviews.count == 0 %>
-      <div class="user_no_review">
-        <h2>It looks like you haven't reviewed any businesses yet. <%= link_to "Get started now!", businesses_path %></h2>  
-      </div>
-    <% end %>
+    <div class="user_home_info">
+      <%= render 'users/avatar', size: :large %>
+      <p><%= @user.first_name %> <%= @user.last_name %></p>
+      <% if @user.reviews.count == 0 %>
+        <div class="user_no_review">
+          <h2>It looks like you haven't reviewed any businesses yet. <%= link_to "Get started now!", businesses_path %></h2>  
+        </div>
+      <% else %>
+        <span>Reviews: <%= @user.reviews.count %></span>
+      <% end %>
+    </div>
+    
     <br>
     <% cache(cache_key_for_user_reviews(@reviews)) do %>
       <% @reviews.each do |review| %>
