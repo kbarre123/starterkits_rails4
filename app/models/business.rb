@@ -33,9 +33,10 @@ class Business < ActiveRecord::Base
       __elasticsearch__.search(
         {
           query: {
-            fuzzy_like_this: {
-              fields: ["title", "category"], 
-              like_text: query
+            fuzzy_like_this: { 
+              like_text: query,
+              fields: ["title", "category"],
+              fuzziness: "AUTO"
             }
           },
           highlight: {
