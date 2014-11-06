@@ -98,5 +98,10 @@
         <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
       </div>
     <% end %>
+    <p class="add_business">
+      <% if can? :manage, @business %>
+          <%= link_to('Edit Business', edit_business_path(@business), :class => 'btn btn-warning') %>
+      <% end %>  
+    </p>
   </div><!-- col-sm-12 -->
 </div>
