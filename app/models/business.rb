@@ -39,6 +39,13 @@ class Business < ActiveRecord::Base
                 max_query_terms: 5,
                 fuzziness: "AUTO"
               }
+            },
+            flt_field: {
+              category: {
+                like_text: query,
+                max_query_terms: 5,
+                fuzziness: "AUTO"
+              }
             }
           },
           highlight: {
