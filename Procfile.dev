@@ -1,0 +1,7 @@
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+
+# See config/unicorn.rb for disabling spawing of workers in web dyno
+# worker: bundle exec sidekiq -C config/sidekiq.yml
+
+# Start ElasticSearch search engine
+elasticsearch: /home/kcb/Documents/code/ruby_on_rails/elasticsearch-1.3.4/bin/elasticsearch -f
