@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021033808) do
+ActiveRecord::Schema.define(version: 20150103214243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20141021033808) do
     t.index ["user_id"], :name => "fk__authentications_user_id"
   end
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "businesses", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -41,11 +47,13 @@ ActiveRecord::Schema.define(version: 20141021033808) do
     t.string   "zip_code"
     t.string   "telephone"
     t.string   "website"
-    t.string   "category"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "state"
     t.string   "map_heading"
+    t.integer  "category_id"
+    t.index ["category_id"], :name => "fk__businesses_category_id"
+    t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_businesses_category_id"
   end
 
   create_table "users", force: true do |t|

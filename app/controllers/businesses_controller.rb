@@ -66,7 +66,7 @@ class BusinessesController < ApplicationController
 
     def business_params
       params.require(:business).permit(:title, :street ,:map_heading, :city, :state, :zip_code, 
-        :telephone, :website, :category, :longitude, :latitude)
+        :telephone, :website, :category_id, :longitude, :latitude)
     end
 
     #def sort_column

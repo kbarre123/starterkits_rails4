@@ -2,10 +2,11 @@ class Business < ActiveRecord::Base
     #Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL'], log: true
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
+    belongs_to :category
 
     has_many :reviews, dependent: :destroy
     validates :title, presence: true, length: { minimum: 5 }
-    validates :category, presence: true
+    validates :category_id, presence: true
     validates :street, presence: true
     validates :map_heading, presence: true
     validates :city, presence: true
@@ -35,7 +36,7 @@ class Business < ActiveRecord::Base
           query: {
             fuzzy_like_this: { 
               like_text: query,
-              fields: ["title", "category"],
+              fields: ["title"],
               fuzziness: "AUTO"
             }
           },
@@ -43,8 +44,7 @@ class Business < ActiveRecord::Base
             pre_tags: ['<em class="label label-highlight">'],
             post_tags: ['</em>'],
             fields: {
-              title:   { number_of_fragments: 0 },
-              category: { fragment_size: 0 }
+              title:   { number_of_fragments: 0 }
             }
           }
         }
