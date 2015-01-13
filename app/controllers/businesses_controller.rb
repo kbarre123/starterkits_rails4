@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
     load_and_authorize_resource
 
-    #helper_method :sort_column, :sort_direction
+    has_scope :by_category, only: :index
 
     def new
         @business = Business.new
@@ -30,8 +30,8 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      #@businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 15)
-      @businesses = Business.page(params[:page])
+      #@businesses = Business.page(params[:page])
+      @businesses = apply_scopes(Business).page(params[:page])
     end
 
     def search

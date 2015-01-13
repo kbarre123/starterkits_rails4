@@ -36,7 +36,7 @@ class Business < ActiveRecord::Base
             pre_tags: ['<em class="label label-highlight">'],
             post_tags: ['</em>'],
             fields: {
-              title:   { number_of_fragments: 0 }
+              title:   { number_of_fragments: 1 }
             }
           }
         }
@@ -55,4 +55,7 @@ class Business < ActiveRecord::Base
     after_commit on: [:destroy] do
       delete_document if self.published?        
     end
+
+    #scope :category, lambda { |category| joins(:category).where('category.name = ?', category) }
+    scope :by_category, -> category { where(category.name => category) }
 end
