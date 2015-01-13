@@ -1,7 +1,6 @@
 class Business < ActiveRecord::Base
-    #Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL'], log: true
-    include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
+    include Elasticsearch::Model #or "ES"
+    #include Elasticsearch::Model::Callbacks
     belongs_to :category
 
     has_many :reviews, dependent: :destroy
@@ -22,14 +21,7 @@ class Business < ActiveRecord::Base
       "#{self.street} #{self.city} #{self.state}, #{self.zip_code}"
     end
 
-    #def self.search(search)
-    #  if search
-    #    where('title LIKE ?', "%#{search}%")
-    #  else
-    #    where(nil)
-    #  end
-    #end
-
+    # Search query for ES
     def self.search(query)
       __elasticsearch__.search(
         {
@@ -50,5 +42,17 @@ class Business < ActiveRecord::Base
         }
       )
     end
+    
+    # Update ES index upon model CRUD
+    after_commit on: [:create] do
+      index_document if self.published?        
+    end
 
+    after_commit on: [:update] do
+      update_document if self.published?        
+    end
+
+    after_commit on: [:destroy] do
+      delete_document if self.published?        
+    end
 end
