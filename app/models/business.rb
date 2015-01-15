@@ -17,6 +17,7 @@ class Business < ActiveRecord::Base
     geocoded_by :map_address
     after_validation :geocode
 
+    # Sort index alphabetically by default
     default_scope { order('title ASC') }
 
     def map_address
@@ -45,6 +46,7 @@ class Business < ActiveRecord::Base
       )
     end
 
-    #scope :category, lambda { |category| joins(:category).where('category.name = ?', category) }
+
+    # For use with has_scope gem. Not in use yet so made need to delete this if I abandon
     scope :by_category, -> category { where(category.name => category) }
 end
