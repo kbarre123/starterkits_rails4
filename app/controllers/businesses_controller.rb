@@ -21,16 +21,9 @@ class BusinessesController < ApplicationController
     def show
       @business = Business.find(params[:id])
       @reviews = @business.reviews.reverse_order.paginate(page: params[:page], per_page: 10)
-      #@hash = Gmaps4rails.build_markers(@business) do |business, marker|
-      #  marker.lat business.latitude
-      #  marker.lng business.longitude
-      #  marker.infowindow business.title
-      #  marker.json({ title: business.title}) #Adds'title' attribute in the source html
-      #end
     end
 
     def index
-      #@businesses = Business.page(params[:page])
       @businesses = apply_scopes(Business).page(params[:page])
     end
 
@@ -68,13 +61,5 @@ class BusinessesController < ApplicationController
       params.require(:business).permit(:title, :street ,:map_heading, :city, :state, :zip_code, 
         :telephone, :website, :category_id, :longitude, :latitude)
     end
-
-    #def sort_column
-    #  Business.column_names.include?(params[:sort]) ? params[:sort] : "title"
-    #end
-
-    #def sort_direction
-    #  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    #end
 
 end
