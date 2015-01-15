@@ -1,11 +1,11 @@
 class Business < ActiveRecord::Base
-    #Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL'], log: true
-    include Elasticsearch::Model
+    include Elasticsearch::Model #or "ES"
     include Elasticsearch::Model::Callbacks
+    belongs_to :category
 
     has_many :reviews, dependent: :destroy
     validates :title, presence: true, length: { minimum: 5 }
-    validates :category, presence: true
+    validates :category_id, presence: true
     validates :street, presence: true
     validates :map_heading, presence: true
     validates :city, presence: true
@@ -17,25 +17,21 @@ class Business < ActiveRecord::Base
     geocoded_by :map_address
     after_validation :geocode
 
+    # Sort index alphabetically by default
+    default_scope { order('title ASC') }
+
     def map_address
       "#{self.street} #{self.city} #{self.state}, #{self.zip_code}"
     end
 
-    #def self.search(search)
-    #  if search
-    #    where('title LIKE ?', "%#{search}%")
-    #  else
-    #    where(nil)
-    #  end
-    #end
-
+    # Search query for ES
     def self.search(query)
       __elasticsearch__.search(
         {
           query: {
             fuzzy_like_this: { 
               like_text: query,
-              fields: ["title", "category"],
+              fields: ["title"],
               fuzziness: "AUTO"
             }
           },
@@ -43,12 +39,14 @@ class Business < ActiveRecord::Base
             pre_tags: ['<em class="label label-highlight">'],
             post_tags: ['</em>'],
             fields: {
-              title:   { number_of_fragments: 0 },
-              category: { fragment_size: 0 }
+              title:   { number_of_fragments: 0 }
             }
           }
         }
       )
     end
 
+
+    # For use with has_scope gem. Not in use yet so made need to delete this if I abandon
+    scope :by_category, -> category { where(category.name => category) }
 end
