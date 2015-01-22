@@ -1,4 +1,4 @@
-<%= cache(cache_key_for_businesses(@businesses)) do %>
+<% @businesses.each do |business| %>
   <div class="bus_index_well">
     <table class="table table-hover pretty">
       <thead>
