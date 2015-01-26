@@ -2,10 +2,10 @@
   <div class="col-md-8 col-md-offset-2">
     <h1 class="bus_name"><%= controller.action_name == 'search' ? 'Search Results' : 'Business List' %>
     </h1>
+
     <%= form_tag search_businesses_path, method: 'get' do %>
       <div class="input-group">
         <%= text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Search...' %>
-
         <span class="input-group-btn">
           <button type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-search"></span>
