@@ -45,8 +45,4 @@ class Business < ActiveRecord::Base
         }
       )
     end
-
-
-    # For use with has_scope gem. Not in use yet so made need to delete this if I abandon
-    scope :by_category, -> category { where(category.name => category) }
 end

@@ -59,8 +59,6 @@ gem 'will_paginate-bootstrap'
 # Search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-# Easy filtering
-gem 'has_scope'
 
 # Email
 gem 'premailer-rails'

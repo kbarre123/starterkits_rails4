@@ -1,10 +1,6 @@
 class BusinessesController < ApplicationController
     load_and_authorize_resource
 
-    # For use with has_scope gem; trying to use it to make filtering easier but may need to delete
-    # if I'm not going to use it. Be sure to remove from Gemfile too.
-    has_scope :by_category, only: :index
-
     def new
         @business = Business.new
     end
@@ -26,7 +22,7 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      @businesses = apply_scopes(Business).page(params[:page])
+      @businesses = Business.all.page(params[:page])
     end
 
     def search
