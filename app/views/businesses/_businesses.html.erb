@@ -9,9 +9,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @businesses.__send__ controller.action_name == 'search' ? :each_with_hit : :each do |business, hit| %>
+        <% @businesses.each do |business| %>
           <tr>
-            <td><%= hit.try(:highlight).try(:title) ? link_to(hit.highlight.title.join.html_safe, business, :class => "bus_index_link") : link_to( business.title, business) %></td>
+            <td><%= link_to(business.title, business, :class => "bus_index_link") %></td>
             <td><%= business.category.name %></td>
             <td><%= number_with_precision(business.reviews.average("rating"), :precision => 2 || 0) 
                 %></td>

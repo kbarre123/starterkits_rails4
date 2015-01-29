@@ -1,6 +1,4 @@
 class Business < ActiveRecord::Base
-    include Elasticsearch::Model #or "ES"
-    include Elasticsearch::Model::Callbacks
     belongs_to :category
 
     has_many :reviews, dependent: :destroy
@@ -24,25 +22,8 @@ class Business < ActiveRecord::Base
       "#{self.street} #{self.city} #{self.state}, #{self.zip_code}"
     end
 
-    # Search query for ES
-    def self.search(query)
-      __elasticsearch__.search(
-        {
-          query: {
-            fuzzy_like_this: { 
-              like_text: query,
-              fields: ["title"],
-              fuzziness: "AUTO"
-            }
-          },
-          highlight: {
-            pre_tags: ['<em class="label label-highlight">'],
-            post_tags: ['</em>'],
-            fields: {
-              title:   { number_of_fragments: 0 }
-            }
-          }
-        }
-      )
+    def self.search(search)
+      where("title LIKE ?", "%#{search}%")
     end
+
 end

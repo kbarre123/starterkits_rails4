@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
     load_and_authorize_resource
+    before_filter :check_for_cancel, :only => [:index]
 
     def new
         @business = Business.new
@@ -22,13 +23,17 @@ class BusinessesController < ApplicationController
     end
 
     def index
-      @businesses = Business.all.page(params[:page])
+      if params[:search]
+        @businesses = Business.search(params[:search]).page(params[:page])
+      else
+        @businesses = Business.all.page(params[:page])
+      end
     end
 
-    def search
-      @businesses = Business.search(params[:q]).page(params[:page]).records
-
-      render action: "index"
+    def check_for_cancel
+      if params[:commit] == "Clear"
+        redirect_to businesses_path
+      end
     end
 
     def edit

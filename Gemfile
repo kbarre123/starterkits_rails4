@@ -54,11 +54,6 @@ gem 'autoprefixer-rails'
 gem 'will_paginate-bootstrap'
 # gem 'bourbon'
 # gem 'neat'
-# gem 'country_select'
-
-# Search
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 
 # Email
 gem 'premailer-rails'
