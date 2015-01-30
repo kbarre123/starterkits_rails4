@@ -17,6 +17,8 @@ class Business < ActiveRecord::Base
 
     # Sort index alphabetically by default
     default_scope { order('title ASC') }
+    scope :by_category, -> category { where(:category => category) }
+    scope :search, ->(search) { where(arel_table[:title].matches("%#{search}%")) }
 
     def map_address
       "#{self.street} #{self.city} #{self.state}, #{self.zip_code}"
@@ -25,5 +27,4 @@ class Business < ActiveRecord::Base
     def self.search(search)
       where("title LIKE ?", "%#{search}%")
     end
-
 end
